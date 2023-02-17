@@ -43,12 +43,22 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
---	use { -- Autocompletion
---		'hrsh7th/nvim-cmp',
---		requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
---	}
+	use 'saadparwiz1/cmp_luasnip'
+	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formattersuse
+	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+  }) -- enhanced lsp uis 
+	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters 
+	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+
 	use "lervag/vimtex"
---	use "SirVer/ultisnips"
+	use "SirVer/ultisnips"
 	
 --  Commenting
 	use {
