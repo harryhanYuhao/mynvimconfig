@@ -32,6 +32,7 @@ Here are some quick guide for installing nvim.
 ### Linux
 
 I recommand to build from source. On a modern cpu the build time shall be less than 5 minutes. 
+It seems that on Debian-based distribution the dependencies `libtool` and `gettext` were not installed by default. Install them with `sudo apt install <PackageName>`
 
 ## Trouble Shooting
 

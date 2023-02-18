@@ -9,6 +9,8 @@ local ensure_packer = function()
   return false
 end
 
+ensure_packer()
+
 require('harry')
 local filename = vim.fn.expand('%')
 
