@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
 
 
 	-- LSP Related Plugins
+	use 'saadparwaiz1/cmp_luasnip'
 	use { -- Autocompletion
 		'hrsh7th/nvim-cmp',
 		requires = { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -43,7 +44,6 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
-	use 'saadparwiz1/cmp_luasnip'
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formattersuse
 	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 use({
