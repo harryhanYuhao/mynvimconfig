@@ -3,22 +3,22 @@ if not status then
   return
 end
 
---treesitter.setup ({
---  highlight = {
---    enable = true,
---  },
---  indent = {
---    enable = true,
---  },
---  autotag = {
---    enable = true,
---  },
---  rainbow = {
---    enable = true,
---    extended_mode = true,
---    max_file_lines = 1000,
---  },
---})
+treesitter.setup ({
+ highlight = {
+   enable = true,
+ },
+ indent = {
+   enable = true,
+ },
+ autotag = {
+   enable = true,
+ },
+ rainbow = {
+   enable = true,
+   extended_mode = true,
+   max_file_lines = 1000,
+ },
+})
 
 require('nvim-treesitter.configs').setup{
 	eusure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'rust', 'help', 'vim', 'java'},

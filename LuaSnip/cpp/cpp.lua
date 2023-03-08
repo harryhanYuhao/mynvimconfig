@@ -2,7 +2,9 @@ return{
 	s({trig='nnn'},
 		{
 			t({
+				"#include <iostream>",
 				"#include <stdio.h>",
+				"#include <vector>",
 				"",
 				"int main() {//int argc, char *argv[]",
 				""
@@ -25,6 +27,16 @@ return{
 		{
 			t({"for (int i = 0; i < "}), i(1),
 			t({"; i++){", ""}),
+			t({"\t"}), i(2),
+			t({	"",
+				"}"
+			}), 
+		}
+	),
+	s({trig="forauto"},
+		{
+			t({"for (auto i: "}), i(1),
+			t({"){", ""}),
 			t({"\t"}), i(2),
 			t({	"",
 				"}"

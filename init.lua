@@ -33,3 +33,6 @@ vim.keymap.set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
 -- Auto Corrections and shortcuts.
 vim.cmd[[:ab teh the]]
+-- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+
+

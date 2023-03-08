@@ -7,7 +7,7 @@ require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"
 require("harry.plugins.cmp")
 require("Comment").setup()
 --require('harry.plugins.lsp')
-
+require('harry.globalKeyMap')
 
 if vim.o.filetype == "lua" then
 	print("ss")
