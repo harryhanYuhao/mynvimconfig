@@ -4,6 +4,11 @@ return{
 			t({"\\mathbb{"}),i(1),t({"}"}), i(0),
 		}
 	),
+	s({trig="b", name="bb", dsc="bold"},
+		{
+			t({"\\bb{"}),i(1),t({"}"}), i(0),
+		}
+	),
 	s({trig="mc", name="Mathematical Caligraphy ", dsc="math caligraphy"},
 		{
 			t({"\\mathcal{"}),i(1),t({"}"}), i(0),
@@ -63,6 +68,16 @@ return{
 	s({trig="inf", name="infinity", dsc="infinity"},
 		{
 			t({"\\infty"}), 
+		}
+	),
+	s({trig="im", name="implies", dsc="implies"},
+		{
+			t({"\\implies"}), 
+		}
+	),
+	s({trig="cels", name="celsius", dsc="celsius"},
+		{
+			t({"^{\\circ}C"}),
 		}
 	),
 
