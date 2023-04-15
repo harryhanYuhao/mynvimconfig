@@ -3,8 +3,15 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
+local handle = io.popen('echo $HOME')
+local output = handle:read('*a')
+local home = output:gsub('[\n\r]', '')
+handle:close()
+
+-- the local home variable records the home directory of the user
+
 function build()
-	if file_exists("/home/hhyh/psu/bin/myc") then
+	if file_exists(home.."/psu/bin/myc") then
 		return "<Esc>:w<CR>:!myc <C-R>% <CR>"
 	else
 		return "<Esc>:w<CR>:!gcc <C-R>% -lm<CR>"

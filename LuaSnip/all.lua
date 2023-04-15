@@ -3,7 +3,7 @@ return {
   -- A snippet that expands the trigger "hi" into the string "Hello, world!".
   require("luasnip").snippet(
     { trig = "hi" },
-    { t("Hello, world!") }
+    { t("Hello, World!") }
   ),
 
   -- To return multiple snippets, use one `return` statement per snippet file

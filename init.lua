@@ -12,6 +12,7 @@ end
 ensure_packer()
 
 require('harry')
+
 local filename = vim.fn.expand('%')
 
 local function mysplit (inputstr, sep)
@@ -33,6 +34,7 @@ vim.keymap.set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
 -- Auto Corrections and shortcuts.
 vim.cmd[[:ab teh the]]
+vim.cmd[[set encoding=UTF-8]]
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 
 

@@ -35,6 +35,11 @@ return{
 			t({"\\cdots"}), 
 		}
 	),
+	s({trig="cd", name="cdot", dsc="cdot"},
+		{
+			t({"\\cdot"}), 
+		}
+	),
 	s({trig="ff", name="fraction", dsc="fraction"},
 		{
 			t({"\\frac{"}),i(1),t({"}{"}),i(2),t({"}"}), i(0),
@@ -81,33 +86,6 @@ return{
 		}
 	),
 
-	-- 	"MathPremeableArticle":{
-	-- 	"prefix": "preamblematharticle",
-	-- 	"body": [
-	-- 		"\\documentclass[12pt, a4paper]{article}",
-	-- 		"\\usepackage{blindtext, titlesec, amsthm, thmtools, amsmath, amsfonts, scalerel, amssymb, graphicx, titlesec, xcolor, multicol, hyperref}",
-	-- 		"\\usepackage[utf8]{inputenc}",
-	-- 		"\\hypersetup{colorlinks,linkcolor={red!40!black},citecolor={blue!50!black},urlcolor={blue!80!black}}",
-	-- 		"\\newtheorem{theorem}{Theorema}[subsection]",
-	-- 		"\\newtheorem{lemma}[theorem]{Lemma}",
-	-- 		"\\newtheorem{corollary}[theorem]{Corollarium}",
-	-- 		"\\newtheorem{hypothesis}{Coniectura}",			
-	-- 		"\\theoremstyle{definition}",
-	-- 		"\\newtheorem{definition}{Definitio}[section]\n",
-	-- 		"\\theoremstyle{remark}",
-	-- 		"\\newtheorem{remark}{Observatio}[section]",
-	-- 		"\\newtheorem{example}{Exampli Gratia}[section]",
-	-- 		"\\renewcommand\qedsymbol{Q.E.D.}",
-	-- 		"\\title{${1:Title}}",
-	-- 		"\\author{${2|Harry Han,Harry Han; S2162783|}}",
-	-- 		"\\date{${3:Date}}",
-	-- 		"\\begin{document}",
-	-- 		"\\maketitle",
-	-- 		"%\\tableofcontents",
-	-- 		"$0",
-	-- 		"\\end{document}"
-	-- Convert the above to Lua Snippet format
-	
 	s({trig="preambleMathArticle", name="MathPremeableArticle", dsc="MathPremeableArticle"},
 		{
 			t({"\\documentclass[12pt, a4paper]{article}",""}),

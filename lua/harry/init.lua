@@ -7,7 +7,6 @@ require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"
 require("harry.plugins.cmp")
 require("Comment").setup()
 --require('harry.plugins.lsp')
-require('harry.globalKeyMap')
 
 if vim.o.filetype == "lua" then
 	print("ss")
@@ -39,9 +38,9 @@ print("We had everything before us, we had nothing before us.")
 print("We were all going direct to Heaven, we were all going direct the other way.")
 print("In short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.")
 
+
 vim.wo.number = true;
 vim.wo.relativenumber = true;
-vim.g.mapleader = ' ' -- set leader key to space
 
 vim.cmd[[let g:copilot_filetypes={
 \'cpp': v:false,
@@ -71,26 +70,30 @@ vim.o.breakindent = true -- wrap text with indent
 vim.o.undofile = true -- enable undo
 vim.o.mouse = 'a' -- enable mouse
 
+-- Keymaps
+vim.g.mapleader = ' ' -- set leader key to space
+require('harry.globalKeyMap')
+
 -- genearl keymaps
-vim.keymap.set('n', '<F5>',	':Copilot disable<CR>', {noremap = true, silent = false}) -- disable copilot
-vim.keymap.set('n', '\\<F5>',':Copilot enable<CR>', {noremap = true, silent = false})
-vim.keymap.set('n', '<leader>e',':NvimTreeToggle <CR>', {noremap = true, silent = false})
-vim.keymap.set('n', '<F1>',':w <CR>', {noremap = true, silent = false})
-vim.keymap.set('n', '\\<F1>',':wq <CR>', {noremap = true, silent = false})
-vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
-vim.keymap.set('n', '<F4>', ':!bash bash.sh<CR>', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<F5>',	':Copilot disable<CR>', {noremap = true, silent = false}) -- disable copilot
+-- vim.keymap.set('n', '\\<F5>',':Copilot enable<CR>', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<leader>e',':NvimTreeToggle <CR>', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<F1>',':w <CR>', {noremap = true, silent = false})
+-- vim.keymap.set('n', '\\<F1>',':wq <CR>', {noremap = true, silent = false})
+-- vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<F4>', ':!bash bash.sh<CR>', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<leader>s', ')i<CR><Esc>', {noremap = true, silent=false})
 
 -- find/replace keymaps
-vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})
--- Editor keymaps
-vim.keymap.set('i', '<C-o>', '{<Esc>o}<Esc>ko', {noremap = true, silent = false})
-vim.keymap.set('n', '<leader><C-o>', 'a{<Esc>o}<Esc>ko', {noremap = true, silent = false})
-
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})
+-- -- Editor keymaps
+-- vim.keymap.set('i', '<C-o>', '{<Esc>o}<Esc>ko', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<leader><C-o>', 'a{<Esc>o}<Esc>ko', {noremap = true, silent = false})
+--
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.g.copilot_no_tab_map =true
 vim.api.nvim_set_keymap("i", "<F2>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
@@ -155,5 +158,7 @@ require('indent_blankline').setup {
 --})
 
 require("nvim-treesitter.install").prefer_git = true -- To circumvent the tree-sitter can not download bug.
--- vim.cmd[[let g:vimtex_view_method='sioyek']]
+
+-- Has to be here because of the autoloading of texlive
+-- Config on textlive can not be place in the ftplugin/tex.lua folder because it will be loaded after the texlive plugin.
 vim.cmd[[let g:vimtex_view_method='zathura']]
