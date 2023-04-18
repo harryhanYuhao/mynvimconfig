@@ -6,6 +6,7 @@ require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
 require("Comment").setup()
+-- require("Todo").setup()
 --require('harry.plugins.lsp')
 
 if vim.o.filetype == "lua" then
@@ -50,9 +51,9 @@ vim.cmd[[let g:copilot_filetypes={
 \'c': v:false,
 \}]]
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
 vim.opt.ignorecase = true -- ignore case when searching
 vim.opt.smartcase = true -- ignore case unless there is a capital letter in the search
@@ -61,7 +62,7 @@ vim.opt.smartcase = true -- ignore case unless there is a capital letter in the 
 
 vim.opt.iskeyword:append('-') --consider string-string as a word
 vim.opt.iskeyword:append('_') --consider string_string as a word
-vim.opt.iskeyword:append('.') --consider string/string as a word
+-- vim.opt.iskeyword:append('.') --consider string/string as a word
 
 vim.o.termguicolors = true -- enable 24-bit RGB colors
 
