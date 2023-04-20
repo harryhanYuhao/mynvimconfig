@@ -45,10 +45,11 @@ vim.wo.relativenumber = true;
 
 vim.cmd[[let g:copilot_filetypes={
 \'cpp': v:false,
+\'c': v:false,
+\'haskell': v:false,
 \'py': v:true,
 \'markdown': v:true,
 \'txt': v:true,
-\'c': v:false,
 \}]]
 
 vim.opt.tabstop = 2

@@ -2,8 +2,8 @@
 
 vim.keymap.set('n', '<C-a>', 'G$vgg0', {noremap = true})
 
-vim.keymap.set('n', '<F5>',	':Copilot disable<CR>', {noremap = true, silent = false}) -- disable copilot
-vim.keymap.set('n', '\\<F5>',':Copilot enable<CR>', {noremap = true, silent = false})
+-- vim.keymap.set('n', '<F5>',	':Copilot disable<CR>', {noremap = true, silent = false}) -- disable copilot
+-- vim.keymap.set('n', '\\<F5>',':Copilot enable<CR>', {noremap = true, silent = false})
 vim.keymap.set('n', '<leader>e',':NvimTreeToggle <CR>', {noremap = true, silent = false})
 vim.keymap.set('n', '<F1>',':w <CR>', {noremap = true, silent = false})
 vim.keymap.set('n', '\\<F1>',':wq <CR>', {noremap = true, silent = false})
@@ -11,6 +11,11 @@ vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
 vim.keymap.set('n', '<F4>', ':!bash bash.sh<CR>', {noremap = true, silent = false})
 vim.keymap.set('n', '<leader>s', ')i<CR><Esc>', {noremap = true, silent=false})
 
+-- Copilot
+local filetype = vim.bo.filetype
+local copilot_enable = ":let g:copilot_filetypes = {'" .. filetype .. "': v:true}<CR>:Copilot enable<CR>:Copilot status<CR>"
+vim.keymap.set('n', '<F5>',	':Copilot disable<CR>:Copilot status<CR>', {noremap = true, silent = false}) -- disable copilot
+vim.keymap.set('n', '\\<F5>', copilot_enable, {noremap = true, silent = false})
 
 -- find/replace keymaps
 vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})

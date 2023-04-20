@@ -31,25 +31,8 @@ Here are some quick guide for installing nvim.
 
 ### Linux
 
-#### Debian-based
-
-Most modern nvim features require version >0.8. The apt version is usually outdated.
-
 I recommand to build from source. On a modern cpu the build time shall be less than 5 minutes. 
-
 It seems that on Debian-based distribution the dependencies `libtool` and `gettext` were not installed by default. Install them with `sudo apt install <PackageName>`
-
-##### Ubuntu
-
-Although snap version of nvim is available and is reasonably up-to-date, I have had some difficulties with it and therefore I recommand to build from source.
-
-#### Fedora 
-
-`sudo dnf install neovim`
-
-#### Arch
-
-`sudo pacman -S neovim`
 
 ## Trouble Shooting
 

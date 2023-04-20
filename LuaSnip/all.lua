@@ -8,8 +8,25 @@ return {
 
   -- To return multiple snippets, use one `return` statement per snippet file
   -- and return a table of Lua snippets.
-  require("luasnip").snippet(
-    { trig = "foo" },
-    { t("Another snippet.") }
-  ),
+
+	s(
+		{ trig = "gitignore" },
+		{ 
+		t({
+				"*.latexmk",
+				"*.aux",
+				"*.log",
+				"*.gz",
+				"*.toc",
+				"*.bbl",
+				"*.bcf",
+				"*.xml",
+				"*.blg",
+				"*.fls",
+				"*.out",
+				"*.o",
+				"*.txt",
+			}),
+		}
+	),
 }
