@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+if [ -d $HOME/.config/nvim ]; then
+		echo "Backing up old config"
+		mv $HOME/.config/nvim $HOME/.config/nvim_bak
+		echo "mv $HOME/.config/nvim $HOME/.config/nvim_bak"
+fi
 
-git clone http://github.com/harryhanYuhao/mynvimconfig.git 
-
-cd mynvimconfig
-
-mv * ~/.config/nvim
-
-
+cp -r * $HOME/.config/nvim

@@ -10,6 +10,13 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ``` 
 to install neovim.
 
+You may also use this snippet to install packer automatically. 
+```sh 
+git clone --depth 1 https://github.com/harryhanYuhao/mynvimconfig.git
+sh install.sh
+```
+
+Remember to type `:PackerInstall` in nvim command mode. 
 ## Dependencies 
 
 Recommand nvim version 0.8
@@ -37,3 +44,4 @@ It seems that on Debian-based distribution the dependencies `libtool` and `gette
 ## Trouble Shooting
 
 It seems nvim lua tree-sitter auto downloading parsers is not working properly. Use `:TSInstall <language-name>` to install parsers.
+
