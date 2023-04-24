@@ -13,6 +13,7 @@ to install neovim.
 You may also use this snippet to install packer automatically. 
 ```sh 
 git clone --depth 1 https://github.com/harryhanYuhao/mynvimconfig.git
+cd mynvimconfig
 sh install.sh
 ```
 
