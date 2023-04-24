@@ -6,4 +6,9 @@ if [ -d $HOME/.config/nvim ]; then
 		echo "mv $HOME/.config/nvim $HOME/.config/nvim_bak"
 fi
 
-cp -r * $HOME/.config/nvim
+# This line copies files that do not end in .md or .sh
+cp `find -maxdepth 1 -regex '\.\/[^.].*\.[^sm]*'` $HOME/.config/nvim 
+
+# This line copies directories that do not start with .
+cp -r `find -maxdepth 1 -regex '\.\/[^.]*'` $HOME/.config/nvim
+
