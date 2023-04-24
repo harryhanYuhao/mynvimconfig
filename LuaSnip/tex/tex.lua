@@ -117,7 +117,6 @@ return{
 		}
 	),
 	
-
 	s({trig="preambleMathArticle", name="MathPremeableArticle", dsc="MathPremeableArticle"},
 		{
 			t({"\\documentclass[12pt, a4paper]{article}",""}),
@@ -133,7 +132,7 @@ return{
 			t({"\\theoremstyle{remark}",""}),
 			t({"\\newtheorem{remark}{Observatio}[section]",""}),
 			t({"\\newtheorem{example}{Exampli Gratia}[section]",""}),
-			t({"\\newcommand{\bb}[1]{\mathbb{#1}}",""}),
+			t({"\\newcommand{\\bb}[1]{\\mathbb{#1}}",""}),
 			t({"\\renewcommand\\qedsymbol{Q.E.D.}",""}),
 			t({"\\title{"}),i(1),t({"}",""}),
 			t({"\\author{"}),i(2),t({"}",""}),
