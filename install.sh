@@ -1,9 +1,15 @@
 #!/bin/sh
 
 if [ -d $HOME/.config/nvim ]; then
-		echo "Backing up old config"
-		mv $HOME/.config/nvim $HOME/.config/nvim_bak
-		echo "mv $HOME/.config/nvim $HOME/.config/nvim_bak"
+	echo "Backing up old config"
+	mv $HOME/.config/nvim $HOME/.config/nvim_bak
+	echo "mv $HOME/.config/nvim $HOME/.config/nvim_bak"
+fi
+
+if [ -f $HOME/.config/nvim ]; then
+	echo "File nvim exists, backing up"
+	mv $HOME/.config/nvim $HOME/.config/nvim_bak
+	echo "mv $HOME/.config/nvim $HOME/.config/nvim_bak"
 fi
 
 mkdir -p $HOME/.config/nvim

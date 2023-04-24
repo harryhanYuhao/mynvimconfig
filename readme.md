@@ -46,3 +46,12 @@ It seems that on Debian-based distribution the dependencies `libtool` and `gette
 
 It seems nvim lua tree-sitter auto downloading parsers is not working properly. Use `:TSInstall <language-name>` to install parsers.
 
+
+## Uninstallation
+
+The nvim runtime path usually contains:
+```shell
+~/.config/nvim 
+~/.local/share/nvim
+/usr/share/nvim/runtime
+```
