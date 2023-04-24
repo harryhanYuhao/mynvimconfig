@@ -67,7 +67,7 @@ return{
 	),
 	s({trig="sum", name="sum", dsc="sum"},
 		{
-			t({"\\sum^{"}),i(1),t({"}_{"}),i(2),t({"}"}),i(3),t({" "}), 
+			t({"\\sum^{"}),i(1),t({"}_{"}),i(2),t({"}"}),i(0),t({" "}), 
 		}
 	),
 	s({trig="inf", name="infinity", dsc="infinity"},
@@ -85,6 +85,38 @@ return{
 			t({"^{\\circ}C"}),
 		}
 	),
+	s({trig="sse", name="subseteq", dsc="subseteq"},
+		{
+			t({"\\subseteq"}),
+		}
+	),
+
+	-- Set Notations
+	-- I have setted \newcommand{\bb}[1]{\mathbb{#1}} 
+	s({trig="R", name="Real Number", dsc="Real Number"},
+		{
+			t({"\\bb{R}"}),
+		}
+	),
+
+	s({trig="Q", name="Rational Number", dsc="Rational Number"},
+		{
+			t({"\\bb{Q}"}),
+		}
+	),
+
+	s({trig="C", name="Complex Number", dsc="Complex Number"},
+		{
+			t({"\\bb{C}"}),
+		}
+	),
+
+	s({trig="N", name="Nature Number", dsc="Nature Number"},
+		{
+			t({"\\bb{N}"}),
+		}
+	),
+	
 
 	s({trig="preambleMathArticle", name="MathPremeableArticle", dsc="MathPremeableArticle"},
 		{
@@ -101,6 +133,7 @@ return{
 			t({"\\theoremstyle{remark}",""}),
 			t({"\\newtheorem{remark}{Observatio}[section]",""}),
 			t({"\\newtheorem{example}{Exampli Gratia}[section]",""}),
+			t({"\\newcommand{\bb}[1]{\mathbb{#1}}",""}),
 			t({"\\renewcommand\\qedsymbol{Q.E.D.}",""}),
 			t({"\\title{"}),i(1),t({"}",""}),
 			t({"\\author{"}),i(2),t({"}",""}),

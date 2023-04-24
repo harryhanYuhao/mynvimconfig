@@ -105,6 +105,11 @@ _G.packer_plugins = {
     path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -124,11 +129,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["nord.nvim"] = {
-    loaded = true,
-    path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -157,11 +157,6 @@ _G.packer_plugins = {
     path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -183,7 +178,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["todo-comments.nvim"] = {
-    config = { "\27LJ\2\n­\2\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0004\4\0\0=\4\a\3=\3\b\2B\0\2\1K\0\1\0\14highlight\fexclude\1\0\t\18comments_only\2\fpattern\22.*<(KEYWORDS)\\s*:\fkeyword\afg\vbefore\afg\22multiline_context\3\n\17max_line_len\3d\22multiline_pattern\a^.\14multiline\2\nafter\afg\14gui_style\1\0\2\afg\tBOLD\abg\tBOLD\1\0\2\18sign_priority\3\f\nsigns\2\nsetup\18todo-comments\frequire\0" },
+    config = { "\27LJ\2\n­\2\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0004\4\0\0=\4\a\3=\3\b\2B\0\2\1K\0\1\0\14highlight\fexclude\1\0\t\nafter\afg\fpattern\22.*<(KEYWORDS)\\s*:\17max_line_len\3d\18comments_only\2\fkeyword\afg\vbefore\afg\22multiline_context\3\n\22multiline_pattern\a^.\14multiline\1\14gui_style\1\0\2\afg\tBOLD\abg\tBOLD\1\0\2\18sign_priority\3\f\nsigns\2\nsetup\18todo-comments\frequire\0" },
     loaded = true,
     path = "/home/hhyh/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
@@ -216,14 +211,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: todo-comments.nvim
-time([[Config for todo-comments.nvim]], true)
-try_loadstring("\27LJ\2\n­\2\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0004\4\0\0=\4\a\3=\3\b\2B\0\2\1K\0\1\0\14highlight\fexclude\1\0\t\18comments_only\2\fpattern\22.*<(KEYWORDS)\\s*:\fkeyword\afg\vbefore\afg\22multiline_context\3\n\17max_line_len\3d\22multiline_pattern\a^.\14multiline\2\nafter\afg\14gui_style\1\0\2\afg\tBOLD\abg\tBOLD\1\0\2\18sign_priority\3\f\nsigns\2\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
-time([[Config for todo-comments.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: todo-comments.nvim
+time([[Config for todo-comments.nvim]], true)
+try_loadstring("\27LJ\2\n­\2\0\0\5\0\t\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0004\4\0\0=\4\a\3=\3\b\2B\0\2\1K\0\1\0\14highlight\fexclude\1\0\t\nafter\afg\fpattern\22.*<(KEYWORDS)\\s*:\17max_line_len\3d\18comments_only\2\fkeyword\afg\vbefore\afg\22multiline_context\3\n\22multiline_pattern\a^.\14multiline\1\14gui_style\1\0\2\afg\tBOLD\abg\tBOLD\1\0\2\18sign_priority\3\f\nsigns\2\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
+time([[Config for todo-comments.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
