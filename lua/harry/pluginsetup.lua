@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		after = 'nvim-treesitter',
 	}
+	use { 'nvim-treesitter/playground' }
 
 	-- Git Related Plugins
 	use "tpope/vim-fugitive"
@@ -97,5 +98,7 @@ return require('packer').startup(function(use)
 	    }
 	  end
 	}
+
+	use 'mbbill/undotree'
 end)
 

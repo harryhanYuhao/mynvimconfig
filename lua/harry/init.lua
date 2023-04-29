@@ -97,25 +97,6 @@ require('harry.globalKeyMap')
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
 -- vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float, { noremap = true, silent = true })
 
-vim.g.copilot_no_tab_map =true
-vim.api.nvim_set_keymap("i", "<F2>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
-local builtin = require('telescope.builtin')
-pcall(require('telescope').load_extension, 'fzf')
-vim.keymap.set('n', '<leader>?', builtin.oldfiles, {desc = '[?] Find old files'})
-vim.keymap.set('n', '<leader><space>', builtin.buffers, {desc = '[?] Find Existing buffers'})
-vim.keymap.set('n',  '<leader>/', function()
-	builtin.current_buffer_fuzzy_find (
-	require('telescope.themes').get_dropdown {
-		winblend = 10,
-		previewer = false,
-		})
-end, {desc = '[/] Fuzzily search in current buffer'})
-
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = '[F]ind [F]iles'})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = '[F]ind [G]rep'})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = '[F]ind [B]uffers'})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = '[F]ind [H]elp'})
 
 --AutoSaveFolds
 vim.cmd[[ 

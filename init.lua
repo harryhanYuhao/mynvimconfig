@@ -29,8 +29,6 @@ local str = mysplit(filename, ".")
 
 local ft = str[2] -- recall in lua the beginning of the list starts with 1. 
 print(ft) -- print the file type
-vim.keymap.set('n', '<C-U>', '<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>', {noremap = true})
-vim.keymap.set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>', {noremap = true})
 
 -- Auto Corrections and shortcuts.
 vim.cmd[[:ab teh the]]
