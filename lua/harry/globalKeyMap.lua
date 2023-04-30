@@ -26,9 +26,11 @@ vim.keymap.set('n', 'n', 'nzz', {noremap = true, silent = false})
 vim.keymap.set('n', 'N', 'Nzz', {noremap = true, silent = false})
 
 -- To void Register 
+-- "_ is the void register. Paste to it to avoid clobbering the default register.
 vim.keymap.set('x', '<leader>p', '"_dP', {noremap = true, silent = false})
 vim.keymap.set('v', '<leader>d', '"_d', {noremap = true, silent = false})
 vim.keymap.set('n', '<leader>d', '"_d', {noremap = true, silent = false})
+vim.keymap.set('n', 'x', '"_x', {noremap = true, silent = false})
 
 --------------------------
 -- Copilot
