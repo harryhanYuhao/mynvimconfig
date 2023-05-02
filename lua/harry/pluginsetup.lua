@@ -1,5 +1,7 @@
--- TODO does it support copilot?
 return require('packer').startup(function(use)
+	----------------------
+	-- Core Plugins
+	----------------------
 	use "wbthomason/packer.nvim"
 	use "nvim-lua/plenary.nvim"
 	use({"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/popup.nvim"}}})
@@ -14,21 +16,24 @@ return require('packer').startup(function(use)
 		after = 'nvim-treesitter',
 	}
 	use { 'nvim-treesitter/playground' }
-
+	use "tpope/vim-surround"
+	
+	----------------------
 	-- Git Related Plugins
+	----------------------
 	use "tpope/vim-fugitive"
 	use "tpope/vim-rhubarb"
 	use "lewis6991/gitsigns.nvim"
 	use "airblade/vim-gitgutter"
 
-	-- Colorschemes
+	----------------------
+	-- UI Related Plugins
+	----------------------
 	-- use "navarasu/onedark.nvim"
 	use "morhetz/gruvbox"
 	-- use "shaunsingh/nord.nvim"
-
 	use "nvim-lualine/lualine.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
-	use "tpope/vim-surround"
 	use {
 		"nvim-tree/nvim-tree.lua",
 		requires = {
@@ -37,12 +42,12 @@ return require('packer').startup(function(use)
 	}
 
 	use({
-	"L3MON4D3/LuaSnip",
-	-- follow latest release.
-	tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-	-- install jsregexp (optional!:).
-	run = "make install_jsregexp"
-})
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp"
+	})
 
 	-- LSP Related Plugins
 	use { -- Autocompletion
@@ -69,36 +74,10 @@ return require('packer').startup(function(use)
     end
 	}
 	-- TODO Comment
-	use {
-	  "folke/todo-comments.nvim",
-	  requires = "nvim-lua/plenary.nvim",
-	  config = function()
-	    require("todo-comments").setup {
-	      -- your configuration comes here
-	      -- or leave it empty to use the default settings
-	      -- refer to the configuration section below
-				signs = true, -- show icons in the signs column
-			  sign_priority = 12, -- sign priority
-				  gui_style = {
-				    fg = "BOLD", -- The gui style to use for the fg highlight group.
-				    bg = "BOLD", -- The gui style to use for the bg highlight group.
-				  },
-				highlight = {
-			    multiline = false, -- enable multine todo comments
-			    multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
-			    multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
-			    before = "fg", -- "fg" or "bg" or empty
-			    keyword = "fg", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
-			    after = "fg", -- "fg" or "bg" or empty
-			    pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
-			    comments_only = true, -- uses treesitter to match keywords in comments only
-			    max_line_len = 100, -- ignore lines longer than this
-			    exclude = {}, -- list of file types to exclude highlighting
-			  },
-	    }
-	  end
-	}
+	use "folke/todo-comments.nvim"
+	
 
 	use 'mbbill/undotree'
+	-- use 'ThePrimeagen/vim-be-good'
 end)
 

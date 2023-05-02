@@ -5,8 +5,8 @@ require('harry.plugins.nvim-tree')
 require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
-require("Comment").setup()
--- require("Todo").setup()
+-- require("harry.plugins.todo")
+require("harry.plugins.todo")
 --require('harry.plugins.lsp')
 
 if vim.o.filetype == "lua" then
