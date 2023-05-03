@@ -5,14 +5,8 @@ require('harry.plugins.nvim-tree')
 require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
--- require("harry.plugins.todo")
 require("harry.plugins.todo")
 --require('harry.plugins.lsp')
-
-if vim.o.filetype == "lua" then
-	print("ss")
-end
-print(vim.o.filetype)
 
 print("I LOVE CHEMISTRY")
 print("Gaudeamus igitur, iuvenes dum sumus!")
@@ -25,20 +19,6 @@ print("Vivat academia, vivant professores, semper sint in flore!")
 print("Vivant omnes virgines. faciles, formosae, vivant et mulieres, tenerae, amabiles!")
 print("Vivat et respublica, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
 print("Alma Mater floreat, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
-print("Gwen is so beautiful!")
-print("Tatiana is so gorgeous!")
-print("Huari is so handsome!")
-print("I love you, my dear!")
-print("I wish you all have courage and strength to face the difficulties in your life!")
-print("It was the best of the times, it was the worst of the times.")
-print("It was the age of wisdom, it was the age of foolishness.")
-print("It was the epoch of belief, it was the epoch of incredulity.")
-print("It was the season of Light, it was the season of Darkness.")
-print("It was the spring of hope, it was the winter of despair.")
-print("We had everything before us, we had nothing before us.")
-print("We were all going direct to Heaven, we were all going direct the other way.")
-print("In short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.")
-
 
 vim.wo.number = true;
 vim.wo.relativenumber = true;
@@ -67,7 +47,6 @@ vim.opt.iskeyword:append('_') --consider string_string as a word
 
 vim.o.termguicolors = true -- enable 24-bit RGB colors
 
-
 vim.o.breakindent = true -- wrap text with indent
 vim.o.undofile = true -- enable undo
 vim.o.mouse = 'a' -- enable mouse
@@ -75,28 +54,6 @@ vim.o.mouse = 'a' -- enable mouse
 -- Keymaps
 vim.g.mapleader = ' ' -- set leader key to space
 require('harry.globalKeyMap')
-
--- genearl keymaps
--- vim.keymap.set('n', '<F5>',	':Copilot disable<CR>', {noremap = true, silent = false}) -- disable copilot
--- vim.keymap.set('n', '\\<F5>',':Copilot enable<CR>', {noremap = true, silent = false})
--- vim.keymap.set('n', '<leader>e',':NvimTreeToggle <CR>', {noremap = true, silent = false})
--- vim.keymap.set('n', '<F1>',':w <CR>', {noremap = true, silent = false})
--- vim.keymap.set('n', '\\<F1>',':wq <CR>', {noremap = true, silent = false})
--- vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
--- vim.keymap.set('n', '<F4>', ':!bash bash.sh<CR>', {noremap = true, silent = false})
--- vim.keymap.set('n', '<leader>s', ')i<CR><Esc>', {noremap = true, silent=false})
-
--- find/replace keymaps
--- vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})
--- -- Editor keymaps
--- vim.keymap.set('i', '<C-o>', '{<Esc>o}<Esc>ko', {noremap = true, silent = false})
--- vim.keymap.set('n', '<leader><C-o>', 'a{<Esc>o}<Esc>ko', {noremap = true, silent = false})
---
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float, { noremap = true, silent = true })
-
 
 --AutoSaveFolds
 vim.cmd[[ 
