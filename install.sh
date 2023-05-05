@@ -6,7 +6,7 @@ NC="\033[0m"
 set -e  # stop the execution if any of the command failed
 
 if [ `pwd` = "/home/`whoami`/.config/nvim" ] ; then
-	echo "You are in the correct directory"
+	echo "You are in nvim runtime directory; Nothing to be done"
 exit 0
 fi
 
