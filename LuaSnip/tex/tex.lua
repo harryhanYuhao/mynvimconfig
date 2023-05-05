@@ -1,85 +1,90 @@
 local hhyh = require("harry.plugins.hhyh_luasnipInclude")
 
+-- Buffer for communcation between user-defined functions and luasnip
 hhyh.my_LuaSnipBuffer = {{"a", "b"}, "temp Table2"}
-function hhyh.toTextNode(list) 
+
+function hhyh.toTextNode(table) 
+	-- Input a table of string, return a table of textNode
 	local textNode = {}
-	for i, v in pairs(list) do
-		textNode[i] = t(v)
-	end
+	for i, v in pairs(table) do textNode[i] = t(v) end
 	return textNode
 end
 
-function hhyh.scandir()
-	local i, t, popen = 0, {}, io.popen
-	local pfile = popen('find')
-	for filename in pfile:lines() do
-		i = i + 1
-		t[i] = filename
-	end
-	pfile:close()
-	return t
-end
+function hhyh.refactoredSearch(findMain, findPictureDir, pictureDirectoryName)
+  -- If find main flag is true, find all the picture fill that share the parent directory of the main file. If the main file can not be found in current directory, it will find it recursely in the parent directory (maximum recursion = 4). If multiple main file exist, it will find the main file closest to current directory
+  -- If find picture directory flag is true, find all the picture file that are in the directory pictureDirectoryName. If pictureDirectoryName is not found in the current directory, the function will try to find it in parent directory. Maximum traceback = 4. if no pictureDirectoryName is found, it will ignore this flag.
+	-- Default value for findMain = false, findPictureDir = false, pictureDirectoryName = "include"
+	-- if findMain and findPictureDir are both false, it will find all the picture file in the current directory
+	-- true for main take precedence over true for picture directory
+  local main_found = false
+  local searchDirectory = ""
+  local pictureDirectoryName = pictureDirectoryName or "include"
+  local pictureDirectoryFound = false
+  local findMain = findMain or false
+  local findPictureDir = findPictureDir or false
+  local searchDirectory
 
-function hhyh.findPictureFiles()
-	local all_files = hhyh.scandir() 
-	local picture_files = {}
-	for k, v in pairs(all_files) do
-		if string.match(v, "%.png$") 
-			or string.match(v, "%.jpg$")
-			or string.match(v, "%.jpeg") then
-			table.insert(picture_files, v)
-		end
-	end
-	return picture_files
-end 
+  local function existFile(filename)
+    local filename = filename or "include"
+    local iter = 4
+    local prev = "./"
 
-function searchForPictureRecursively()
-	main_found = false
-	picture_files ={}
-	prev = "./"
-	n_iter = 2
-	t =  {}
+    ::nextRecursive::
+    include = io.popen("find " .. prev .. " ")
 
-	local function findPictureFiles(all_files)
-		local picture_files = {}
-		for k, v in pairs(all_files) do
-			if string.match(v, "%.png$") 
-				or string.match(v, "%.jpg$")
-				or string.match(v, "%.jpeg") then
-				table.insert(picture_files, v)
-			end
-		end
-		return picture_files
-	end 
+    for line in include:lines() do
+      line = line .. "/"
+      if string.find(line, "/" .. filename) then return true, line end
+    end
+    include:close()
 
-	local function creatlistofFile()
-		pfile = io.popen("find ".._G.prev)
-		_G.t = {}
-		i = 0
+    if iter > 0 then
+      iter = iter - 1
+      prev = prev .. "../"
+      goto nextRecursive
+    else
+      return false, filename .. " Not found"
+    end
+  end
 
-		for line in pfile:lines() do
-			i = i + 1
-			t[i] = line
-		end
-		-- print(table.concat(t, " "))
-		if string.find(table.concat(t, " "), "main") then
-			main_found = true	
-			picture_files = findPictureFiles(t)
-		else 
-			if n_iter > 0 then
-				prev = prev .. "../"
-				n_iter = n_iter - 1  -- lua has no increment operator
-				creatlistofFile()
-			end
-		end
-	end
+  local function s_findAllPictureFiles(directory)
+    local res = {}
+    local function s_isItPicture(filename)
+      v = filename
+      if string.match(v, "%.png$") or string.match(v, "%.jpg$") or
+          string.match(v, "%.jpeg$") or string.match(v, "%.pdf$") then
+        return true
+      end
+      return false
+    end
 
-	creatlistofFile()
-	if main_found then
-		return picture_files
-	else
-		return {}
-	end 
+    local pfile = io.popen("find " .. directory)
+    for line in pfile:lines() do
+      if s_isItPicture(line) then table.insert(res, line) end
+    end
+    if #res > 0 then
+      return res
+    else
+      return {"No Picture Found"}
+    end
+  end
+	
+	searchDirectory = "./"
+
+  if findMain then
+    main_found, bufdir = existFile("main")
+    if main_found then _, _, bufdir = string.find(bufdir, "(.*)main.*$") end
+    searchDirectory = bufdir
+  elseif findPictureDir then
+    pictureDirectoryFound, bufdir = existFile(pictureDirectoryName)
+    if pictureDirectoryFound then
+      searchDirectory = bufdir
+    end
+  else
+    searchDirectory = "./"
+  end
+
+  return s_findAllPictureFiles(searchDirectory)
 end
 
 
@@ -240,11 +245,11 @@ return{
 			]],
 			-- The insert node is placed in the <> angle brackets
 			{ i(1) },
-			-- This is where I specify that angle brackets are used as node positions.
+			-- This is where to specify that angle brackets are used as node positions.
+			-- To escape delimiter, repeat it twice
 			{ delimiters = "<>" }
 		)
 	),
-	-- To escape delimiter, repeat it twice
 	s(
 		{
 			trig="envr",
@@ -286,39 +291,19 @@ return{
 			"\\frac{" .. snip.captures[1] .. "}" .. "{" .. snip.captures[2] .. "}" end, {})
 	),
 	s(
-	{
-		trig = "[{(](.+)[)}]/[{(](.+)[)}]", 
-		dscr = [[Expand ((a+b)*c)/(b+d) to \\frac{(a+b)*c}{b+d}]],
-		regTrig = true,
-	},
+		{
+			trig = "[{(](.+)[)}]/[{(](.+)[)}]", 
+			dscr = [[Expand ((a+b)*c)/(b+d) to \\frac{(a+b)*c}{b+d}]],
+			regTrig = true,
+		},
 		f(function(args, snip) return
 			"\\frac{" .. snip.captures[1] .. "}" .. "{" .. snip.captures[2] .. "}" end, {})	
 	),
 
 	s(
 		{
-			trig = "trg" ,
-		},
-		f(function()
-			-- local my_CWD = vim.fn.getcwd()
-			local all_files = hhyh.scandir() 
-			local picture_files = {}
-			for k, v in pairs(all_files) do
-				if string.match(v, "%.png$") 
-					or string.match(v, "%.jpg$")
-					or string.match(v, "%.jpeg") then
-					table.insert(picture_files, v)
-				end
-			end
-			return picture_files
-			-- return vim.fn.getcwd()
-			end, {})
-	),
-				-- \includegraphics[width=0.8\textwidth]{<>}
-	s(
-		{
-			trig = "findPic" ,
-			dscr = "find picture files in current directory, can be cycled through",
+			trig = "Picture_Insert_Current" ,
+			dscr = "find picture and insert files in current directory, can be cycled through",
 		},
 		fmt(
 			[[
@@ -330,34 +315,65 @@ return{
 			\end{figure}
 			]], 
 			{
-				 i(1, "Caption"), rep(1), 
-		c(2, hhyh.toTextNode(hhyh.findPictureFiles()))
+				i(1, "Caption"), rep(1), 
+				c(2, hhyh.toTextNode(hhyh.refactoredSearch()))
 			},
 			{
 				delimiters = "<>"
 			}
-	)
+		)
 	),
 	s(
 		{
-			trig = "reFindPic" ,
-			dscr = "recursively find picture files in parent directory unitl finding main, can be cycled through",
+			trig = "Picture_Insert_include" ,
+			dscr = "find picture files in the include Directory ",
 		},
+		fmt(
+			[[
+			\begin{figure}[htbp]
+				\centering
+				\caption{<>}
+				\label{fig:<>}
+				\includegraphics[width=0.8\textwidth]{<>}
+			\end{figure}
+			]], 
+			{
+				i(1, "Caption"), rep(1), 
+				c(2, hhyh.toTextNode(hhyh.refactoredSearch(false,true)))
+			},
+			{
+				delimiters = "<>"
+			}
+		)
+	),
+s(
 		{
-			f(function()
-				-- hhyh.my_LuaSnipBuffer[1]=hhyh.findPictureFiles()
-				-- WARNING: BUG HERE
-				hhyh.my_LuaSnipBuffer[1]=searchForPictureRecursively()
-				return ""
-			end),
-			i(1, "Enter Text"),
-			t"buu",
-			d(2, 
-				function() 
-					return sn(nil, {
-						c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
-					})
-				end, {1})
-		}
+			trig = "Picture_Insert_Main" ,
+			dscr = "find all picture files contained in current directory"
+		},
+		fmt(
+			[[
+			\begin{figure}[htbp]
+				\centering<>
+				\caption{<>}
+				\label{fig:<>}
+				\includegraphics[width=0.8\textwidth]{<>}
+			\end{figure}
+			]], 
+			{
+				f(function()
+					hhyh.my_LuaSnipBuffer[1]=hhyh.refactoredSearch(true)
+					return ""
+				end),
+				i(1, "Caption"), rep(1), 
+				d(2, -- dynamic node required here for checking updated local variable
+					function() 
+						return sn(nil, {
+							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
+						})
+					end, {1})
+			},
+			{ delimiters = "<>" }
+		)  -- for fmt()
 	),
 }
