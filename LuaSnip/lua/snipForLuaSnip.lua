@@ -21,7 +21,7 @@ return{
 						[events.enter] = function(node, _event_args)
 							-- feed escape key
 							vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", true) 
-							vim.api.nvim_feedkeys("zz=api", "n", false)
+							vim.api.nvim_feedkeys("=apzzi", "n", false)
 						end
 					}
 			}
