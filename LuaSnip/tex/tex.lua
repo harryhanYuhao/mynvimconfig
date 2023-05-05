@@ -299,57 +299,95 @@ return{
 		f(function(args, snip) return
 			"\\frac{" .. snip.captures[1] .. "}" .. "{" .. snip.captures[2] .. "}" end, {})	
 	),
-
-	s(
-		{
-			trig = "Picture_Insert_Current" ,
-			dscr = "find picture and insert files in current directory, can be cycled through",
-		},
-		fmt(
-			[[
-			\begin{figure}[htbp]
-				\centering
-				\caption{<>}
-				\label{fig:<>}
-				\includegraphics[width=0.8\textwidth]{<>}
-			\end{figure}
-			]], 
-			{
-				i(1, "Caption"), rep(1), 
-				c(2, hhyh.toTextNode(hhyh.refactoredSearch()))
-			},
-			{
-				delimiters = "<>"
-			}
-		)
-	),
+	-- This code words with a small bug: If the buffer is opened befored the creation of the picture files, the picture files would not be detected
+	-- s(
+	-- 	{
+	-- 		trig = "Picture_Insert_Current" ,
+	-- 		dscr = "find picture and insert files in current directory, can be cycled through",
+	-- 	},
+	-- 	fmt(
+	-- 		[[
+	-- 		\begin{figure}[htbp]
+	-- 			\centering
+	-- 			\caption{<>}
+	-- 			\label{fig:<>}
+	-- 			\includegraphics[width=0.8\textwidth]{<>}
+	-- 		\end{figure}
+	-- 		]], 
+	-- 		{
+	-- 			i(1, "Caption"), rep(1), 
+	-- 			c(2, hhyh.toTextNode(hhyh.refactoredSearch()))
+	-- 		},
+	-- 		{
+	-- 			delimiters = "<>"
+	-- 		}
+	-- 	)
+	-- ),
+	
 	s(
 		{
 			trig = "Picture_Insert_include" ,
-			dscr = "find picture files in the include Directory ",
+			dscr = "find all picture files contained in current directory"
 		},
 		fmt(
 			[[
 			\begin{figure}[htbp]
-				\centering
+				\centering<>
 				\caption{<>}
 				\label{fig:<>}
 				\includegraphics[width=0.8\textwidth]{<>}
 			\end{figure}
 			]], 
 			{
+				f(function()  -- a dummy function just to modify a sharing buffer
+					hhyh.my_LuaSnipBuffer[1]=hhyh.refactoredSearch(false, true)
+					return ""
+				end),
 				i(1, "Caption"), rep(1), 
-				c(2, hhyh.toTextNode(hhyh.refactoredSearch(false,true)))
+				d(2, -- dynamic node required here for checking updated local variable
+					function() 
+						return sn(nil, {
+							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
+						})
+					end, {1})
 			},
+			{ delimiters = "<>" }
+		)  -- for fmt()
+	),  -- for s()
+	s(
+		{
+			trig = "Picture_Insert_Current" ,
+			dscr = "find all picture files contained in current directory"
+		},
+		fmt(
+			[[
+			\begin{figure}[htbp]
+				\centering<>
+				\caption{<>}
+				\label{fig:<>}
+				\includegraphics[width=0.8\textwidth]{<>}
+			\end{figure}
+			]], 
 			{
-				delimiters = "<>"
-			}
-		)
-	),
-s(
+				f(function()
+					hhyh.my_LuaSnipBuffer[1]=hhyh.refactoredSearch()
+					return ""
+				end),
+				i(1, "Caption"), rep(1), 
+				d(2, -- dynamic node required here for checking updated local variable
+					function() 
+						return sn(nil, {
+							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
+						})
+					end, {1})
+			},
+			{ delimiters = "<>" }
+		)  -- for fmt()
+	),  -- for s()
+	s(
 		{
 			trig = "Picture_Insert_Main" ,
-			dscr = "find all picture files contained in current directory"
+			dscr = "find all picture files contained in the parent directory of the main.tex file",
 		},
 		fmt(
 			[[
@@ -375,5 +413,5 @@ s(
 			},
 			{ delimiters = "<>" }
 		)  -- for fmt()
-	),
+	),  -- for s()
 }
