@@ -22,13 +22,14 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = false})
 vim.keymap.set('n', 'J', 'mzJ`z', {noremap = true, silent = false})
 vim.keymap.set('n', '<C-d>', '<C-d>zz', {noremap = true, silent = false})
 vim.keymap.set('n', '<C-u>', '<C-u>zz', {noremap = true, silent = false})
-vim.keymap.set('n', 'n', 'nzz', {noremap = true, silent = false})
-vim.keymap.set('n', 'N', 'Nzz', {noremap = true, silent = false})
 
 -- To void Register 
 vim.keymap.set('x', '<leader>p', '"_dP', {noremap = true, silent = false})
-vim.keymap.set('v', '<leader>d', '"_d', {noremap = true, silent = false})
-vim.keymap.set('n', '<leader>d', '"_d', {noremap = true, silent = false})
+vim.keymap.set('n', 'x', '"_x', {noremap = true, silent = false})
+vim.keymap.set('v', 'x', '"_x', {noremap = true, silent = false})
+
+-- Windows
+vim.keymap.set('n', '<leader>j', '10<C-w><', {noremap = true, silent = false})
 
 --------------------------
 -- Copilot

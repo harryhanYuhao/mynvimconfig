@@ -299,6 +299,21 @@ return{
 		f(function(args, snip) return
 			"\\frac{" .. snip.captures[1] .. "}" .. "{" .. snip.captures[2] .. "}" end, {})	
 	),
+	s(
+		{
+			trig = "(s+)ec",
+			dscr = "(sub)section",
+			regTrig = true,
+			docstring = [[Expand sec to \section{}, ssec to \subsection{}, sssec to \subsubsection{}, etc.]]
+		},
+		{
+		f(function(args, snip)
+			local cap = snip.captures[1]
+			local prefix = ""
+			for i=1, #cap-1 do prefix = prefix .. "sub" end
+			return "\\" .. prefix .. "section" .. "{" end, {}),
+		i(1, "section title"), t({"}", ""})}
+	),
 	-- This code words with a small bug: If the buffer is opened befored the creation of the picture files, the picture files would not be detected
 	-- s(
 	-- 	{

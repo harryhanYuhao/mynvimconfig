@@ -28,7 +28,7 @@ end
 local str = mysplit(filename, ".")
 
 local ft = str[2] -- recall in lua the beginning of the list starts with 1. 
-print(ft) -- print the file type
+-- print(ft) -- print the file type
 
 -- Auto Corrections and shortcuts.
 vim.cmd[[:ab teh the]]
