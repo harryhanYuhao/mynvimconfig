@@ -15,13 +15,13 @@ return require('packer').startup(function(use)
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		after = 'nvim-treesitter',
 	}
-	use { 'nvim-treesitter/playground' }
+	-- use { 'nvim-treesitter/playground' }
 	use "tpope/vim-surround"
 	
 	----------------------
 	-- Git Related Plugins
 	----------------------
-	use "tpope/vim-fugitive"
+	-- use "tpope/vim-fugitive"
 	use "tpope/vim-rhubarb"
 	use "lewis6991/gitsigns.nvim"
 	use "airblade/vim-gitgutter"

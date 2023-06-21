@@ -31,7 +31,7 @@ vim.cmd[[let g:copilot_filetypes={
 \'markdown': v:true,
 \'txt': v:true,
 \}]]
-
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
@@ -45,7 +45,7 @@ vim.opt.iskeyword:append('-') --consider string-string as a word
 vim.opt.iskeyword:append('_') --consider string_string as a word
 -- vim.opt.iskeyword:append('.') --consider string/string as a word
 
-vim.o.termguicolors = true -- enable 24-bit RGB colors
+-- vim.o.termguicolors = true -- enable 24-bit RGB colors
 
 vim.o.breakindent = true -- wrap text with indent
 vim.o.undofile = true -- enable undo
@@ -67,8 +67,8 @@ augroup END
 
 
 --colorscheme
---Available colorschemes: gruvbox, nord, 
 vim.cmd [[let g:gruvbox_contrast_dark = 'hard']] -- vim.cmd [[ ]] will run vim code in lua file.
+--Available colorschemes: gruvbox, nord, 
 vim.cmd [[colorscheme gruvbox]] -- set colorscheme, gruvbox is from morhetz/gruvbox
 
 -- See :help lualine.txt

@@ -8,7 +8,7 @@ return{
 				"int main() {//int argc, char *argv[]",
 				""
 				}),
-			t({"    "}), i(0),
+			t({"\t"}), i(0),
 			t({ "",
 				"	return 0;",
 				"}"
