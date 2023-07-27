@@ -2,12 +2,13 @@ return{
   s(
     {
       -- trigger: two character, an optional character (0 or 1 occurence) and an optional comma
-      trig = "(...?,?)",
+      trig = "([^%s]+,?)",  -- match all except whitespace 
       dscr = "For the sake of formatting assembly",
       regTrig = true,
       priority = 10     -- default priority is 1000
     },
     {
+      -- this function calculate the correct amount of spaces to add to the end of the first capture group
       f(function(args, snip)
         local cap = snip.captures[1]  -- the first capture group
         local length = string.len(cap)  -- apply right padding
@@ -20,7 +21,7 @@ return{
       i(0),
     }
   ),
-
+  
   s(
     {
       trig = "(sysc?a?l?)",
