@@ -9,16 +9,16 @@ require("harry.plugins.todo")
 --require('harry.plugins.lsp')
 
 -- print("I LOVE CHEMISTRY")
--- print("Gaudeamus igitur, iuvenes dum sumus!")
--- print("Post iucundam iuventutem, post molestam senectutem, nos habebit humus.")
--- print("Ubi sunt qui ante nos in mundo fuere?")
--- print("Vadite ad superos, transite ad inferos, ubi iam fuere?")
--- print("Vita nostra brevis est, brevi finietur.")
--- print("Venit mors velociter, rapit nos atrociter, nemini parcetur.")
--- print("Vivat academia, vivant professores, semper sint in flore!")
--- print("Vivant omnes virgines. faciles, formosae, vivant et mulieres, tenerae, amabiles!")
--- print("Vivat et respublica, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
--- print("Alma Mater floreat, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
+print("Gaudeamus igitur, iuvenes dum sumus!")
+print("Post iucundam iuventutem, post molestam senectutem, nos habebit humus.")
+print("Ubi sunt qui ante nos in mundo fuere?")
+print("Vadite ad superos, transite ad inferos, ubi iam fuere?")
+print("Vita nostra brevis est, brevi finietur.")
+print("Venit mors velociter, rapit nos atrociter, nemini parcetur.")
+print("Vivat academia, vivant professores, semper sint in flore!")
+print("Vivant omnes virgines. faciles, formosae, vivant et mulieres, tenerae, amabiles!")
+print("Vivat et respublica, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
+print("Alma Mater floreat, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
 
 vim.wo.number = true;
 vim.wo.relativenumber = true;
@@ -35,6 +35,9 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
+-- vim.opt.tabstop = 8
+-- vim.opt.shiftwidth = 8
+-- vim.opt.softtabstop = 8
 
 vim.opt.ignorecase = true -- ignore case when searching
 vim.opt.smartcase = true -- ignore case unless there is a capital letter in the search
