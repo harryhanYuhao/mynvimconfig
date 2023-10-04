@@ -85,6 +85,15 @@ require('lualine').setup {
   },
 }
 
+
+-- TODO: Update to indent blankline v3
+-- require "ibl".setup()
+-- require "ibl".update({
+--   indent = { char = "┊" },
+-- })
+
+
+-- This config is for indent-blankline v2
 require('indent_blankline').setup {
 	char = '┊',
 	show_trailing_blankline_indent = false,

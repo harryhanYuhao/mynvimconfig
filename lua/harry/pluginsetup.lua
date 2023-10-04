@@ -26,20 +26,26 @@ return require('packer').startup(function(use)
 	use "lewis6991/gitsigns.nvim"
 	use "airblade/vim-gitgutter"
 
-	----------------------
-	-- UI Related Plugins
-	----------------------
-	-- use "navarasu/onedark.nvim"
-	use "morhetz/gruvbox"
-	-- use "shaunsingh/nord.nvim"
-	use "nvim-lualine/lualine.nvim"
-	use "lukas-reineke/indent-blankline.nvim"
-	use {
-		"nvim-tree/nvim-tree.lua",
-		requires = {
-			'nvim-tree/nvim-web-devicons',
-		}
-	}
+  ----------------------
+  -- UI Related Plugins
+  ----------------------
+  -- use "navarasu/onedark.nvim"
+  use "morhetz/gruvbox"
+  -- use "shaunsingh/nord.nvim"
+  use "nvim-lualine/lualine.nvim"
+
+  -- TODO: Update to indent blankline v3
+  -- Note For packer to work, nvim shall be closed and :PackerSync shall be run
+  use {"lukas-reineke/indent-blankline.nvim", 
+    commit = "9637670"
+  }
+  use {
+    "nvim-tree/nvim-tree.lua",
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    setup = "require(\"nvim-tree\").setup()",
+  }
 
 	use({
 		"L3MON4D3/LuaSnip",
