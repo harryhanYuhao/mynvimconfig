@@ -1,13 +1,15 @@
 #!/bin/sh
 
 echo "Uninstalling (y/n)"
-echo "This script will attempt to remove irrevocaly all nvim files, configurations, and plugins systemwise"
+echo "This script will attempt to remove irrevocaly all nvim files, configurations and plugins in user space"
 read answer
 
-if [ "$answer" = "y" ] && [ `id -u` = 0 ]; then
+if [ "$answer" = "y" ]; then
     echo "Removing nvim files"
     rm -rf ~/.config/nvim
     rm -rf ~/.local/share/nvim
     rm -rf ~/.cache/nvim
-    rm -rf /usr/share/nvim/runtime
+    cd ~
 fi
+
+echo "to uninstall systemwise, use your package manager"
