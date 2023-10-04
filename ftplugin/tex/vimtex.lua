@@ -9,6 +9,7 @@ vim.cmd[[let g:vimtex_quickfix_ignore_filters = [
 	\'Underfull',
 	\'Overfull',
 	\'LaTeX Font Warning',
+	\'LaTeX Warning: Label(s) may have changed', 
 	\]
 ]]
 --vim.cmd[[let g:vimtex_quickfix_open_on_warning = 0]]
