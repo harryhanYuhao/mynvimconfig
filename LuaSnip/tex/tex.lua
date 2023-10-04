@@ -264,7 +264,7 @@ return{
 			\end{<>}
 			]], 
 			{
-				iNode1 = i(1, "example"), i(0),rep(1),
+				iNode1 = i(1, "example"), i(0), rep(1),
 			},
 			{
 				delimiters = "<>"
