@@ -17,5 +17,3 @@ require('harry')
 vim.cmd[[:ab teh the]]
 vim.cmd[[set encoding=UTF-8]]
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
-
-

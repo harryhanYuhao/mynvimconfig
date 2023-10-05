@@ -1,7 +1,6 @@
 require('harry.pluginsetup')
 require('harry.plugins.telescope')
 require('harry.plugins.treesitter')
-require('harry.plugins.nvim-tree')
 require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
@@ -23,14 +22,15 @@ print("Alma Mater floreat, quae nos educavit, caros et commilitones, dissitas in
 vim.wo.number = true;
 vim.wo.relativenumber = true;
 
-vim.cmd[[let g:copilot_filetypes={
-\'cpp': v:false,
-\'c': v:false,
-\'haskell': v:false,
-\'py': v:true,
-\'markdown': v:true,
-\'txt': v:true,
-\}]]
+-- vim.cmd[[let g:copilot_filetypes={
+-- \'cpp': v:false,
+-- \'c': v:false,
+-- \'haskell': v:false,
+-- \'py': v:true,
+-- \'markdown': v:true,
+-- \'txt': v:true,
+-- \}]]
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -56,6 +56,7 @@ vim.o.mouse = 'a' -- enable mouse
 
 -- Keymaps
 vim.g.mapleader = ' ' -- set leader key to space
+
 require('harry.globalKeyMap')
 
 --AutoSaveFolds
@@ -70,37 +71,11 @@ augroup END
 
 
 --colorscheme
+-- The color scheme are depending on plugins
 vim.cmd [[let g:gruvbox_contrast_dark = 'hard']] -- vim.cmd [[ ]] will run vim code in lua file.
 --Available colorschemes: gruvbox, nord, 
 vim.cmd [[colorscheme gruvbox]] -- set colorscheme, gruvbox is from morhetz/gruvbox
 
--- See :help lualine.txt
--- dependent on lualine plugin
-require('lualine').setup {
-  options = {
-	theme = 'gruvbox',
-	icons_enabled = false,
-	component_separators = '|',
-	section_separators = '',
-  },
-}
-
-require('indent_blankline').setup {
-	char = '┊',
-	show_trailing_blankline_indent = false,
-}
-
---require("mason").setup({
---    ui = {
---        icons = {
---            package_installed = "✓",
---            package_pending = "➜",
---            package_uninstalled = "✗"
---        }
---    }
---})
-
-require("nvim-treesitter.install").prefer_git = true -- To circumvent the tree-sitter can not download bug.
 
 -- Has to be here because of the autoloading of texlive
 -- Config on textlive can not be place in the ftplugin/tex.lua folder because it will be loaded after the texlive plugin.
