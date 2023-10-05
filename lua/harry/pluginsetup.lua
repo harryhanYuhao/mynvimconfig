@@ -44,13 +44,15 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-tree/nvim-web-devicons',
     },
-    setup = "require(\"nvim-tree\").setup()",
+    config = function()
+      require("nvim-tree").setup()
+  end
   }
 
 	use({
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
-		tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 		-- install jsregexp (optional!:).
 		run = "make install_jsregexp"
 	})

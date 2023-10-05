@@ -1,7 +1,6 @@
 require('harry.pluginsetup')
 require('harry.plugins.telescope')
 require('harry.plugins.treesitter')
-require('harry.plugins.nvim-tree')
 require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
