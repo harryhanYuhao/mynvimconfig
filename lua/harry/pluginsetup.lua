@@ -32,12 +32,12 @@ return require('packer').startup(function(use)
 	-- TODO Comment
 	use "folke/todo-comments.nvim"
 
-	----------------------
-	-- Git Related Plugins
-	----------------------
-	-- use "tpope/vim-fugitive"
-	use "tpope/vim-rhubarb"
-	use "lewis6991/gitsigns.nvim"
+  ----------------------
+  -- Git Related Plugins
+  ----------------------
+  -- use "tpope/vim-fugitive"
+  use "tpope/vim-rhubarb"
+  use "lewis6991/gitsigns.nvim"
 
   ----------------------
   -- UI Related Plugins

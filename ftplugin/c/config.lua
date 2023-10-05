@@ -1,5 +1,0 @@
--- execute vim command copilot disable
--- local filetype = vim.bo.filetype
--- local enable = ":let g:copilot_filetypes = {'" .. filetype .. "': v:true}<CR>:Copilot enable<CR>"
--- vim.keymap.set('n', '<F5>',	':Copilot disable<CR>', {noremap = true, silent = false}) -- disable copilot
--- vim.keymap.set('n', '\\<F5>', enable, {noremap = true, silent = false})
