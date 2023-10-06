@@ -31,13 +31,13 @@ vim.wo.relativenumber = true;
 -- \'txt': v:true,
 -- \}]]
 
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
--- vim.opt.tabstop = 8
--- vim.opt.shiftwidth = 8
--- vim.opt.softtabstop = 8
+-- vim.opt.expandtab = true
+-- vim.opt.tabstop = 2
+-- vim.opt.shiftwidth = 2
+-- vim.opt.softtabstop = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 
 vim.opt.ignorecase = true -- ignore case when searching
 vim.opt.smartcase = true -- ignore case unless there is a capital letter in the search
