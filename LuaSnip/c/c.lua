@@ -7,7 +7,7 @@ return{
 				"",
 				"int main() {//int argc, char *argv[]",
 				""
-				}),
+			}),
 			t({"\t"}), i(0),
 			t({ "",
 				"	return 0;",
@@ -30,6 +30,24 @@ return{
 			t({	"",
 				"}"
 			}), 
+		}
+	),
+	s(
+		{
+			trig = [[/*]],
+			dscr = [[Kernel comment]],
+		},
+		{
+			t({"/* "}), i(0), t({"*/"}),
+		}
+	),
+	s(
+		{
+			trig = [[com]],
+			dscr = [[Kernel comment]],
+		},
+		{
+			t({"/* "}), i(0), t({"*/"}),
 		}
 	),
 }
