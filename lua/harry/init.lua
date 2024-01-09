@@ -1,11 +1,10 @@
 require('harry.pluginsetup')
 require('harry.plugins.telescope')
-require('harry.plugins.treesitter')
 require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
 require("harry.plugins.todo")
---require('harry.plugins.lsp')
+require('harry.plugins.lsp')
 
 -- print("I LOVE CHEMISTRY")
 print("Gaudeamus igitur, iuvenes dum sumus!")
@@ -16,8 +15,8 @@ print("Vita nostra brevis est, brevi finietur.")
 print("Venit mors velociter, rapit nos atrociter, nemini parcetur.")
 print("Vivat academia, vivant professores, semper sint in flore!")
 print("Vivant omnes virgines. faciles, formosae, vivant et mulieres, tenerae, amabiles!")
-print("Vivat et respublica, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
-print("Alma Mater floreat, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
+print("Vivat et respublnca, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
+print("Alma Mater florent, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
 
 vim.wo.number = true;
 vim.wo.relativenumber = true;
@@ -46,7 +45,7 @@ vim.opt.smartcase = true -- ignore case unless there is a capital letter in the 
 
 vim.opt.iskeyword:append('-') --consider string-string as a word
 vim.opt.iskeyword:append('_') --consider string_string as a word
--- vim.opt.iskeyword:append('.') --consider string/string as a word
+-- vim.opt.iskeyword:append('.') --consider string/string as a wordlil
 
 -- vim.o.termguicolors = true -- enable 24-bit RGB colors
 
@@ -69,13 +68,19 @@ augroup END
 ]]
 --vim.cmd[[set fillchars=fold:\ ]]
 
+vim.cmd[[
+set path+=.
+set path+=..
+set path+=/usr/include/
+]]
 
 --colorscheme
 -- The color scheme are depending on plugins
 vim.cmd [[let g:gruvbox_contrast_dark = 'hard']] -- vim.cmd [[ ]] will run vim code in lua file.
 --Available colorschemes: gruvbox, nord, 
 vim.cmd [[colorscheme gruvbox]] -- set colorscheme, gruvbox is from morhetz/gruvbox
-
+vim.cmd [[highlight! Normal guibg=NONE ctermbg=NONE]] -- set background to none
+vim.cmd [[hi! link SignColumn LineNr]]
 
 -- Has to be here because of the autoloading of texlive
 -- Config on textlive can not be place in the ftplugin/tex.lua folder because it will be loaded after the texlive plugin.
