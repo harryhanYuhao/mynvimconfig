@@ -1,6 +1,5 @@
 require('harry.pluginsetup')
 require('harry.plugins.telescope')
-require('harry.plugins.treesitter')
 require('harry.plugins.luasnip')
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
 require("harry.plugins.cmp")
@@ -16,8 +15,8 @@ print("Vita nostra brevis est, brevi finietur.")
 print("Venit mors velociter, rapit nos atrociter, nemini parcetur.")
 print("Vivat academia, vivant professores, semper sint in flore!")
 print("Vivant omnes virgines. faciles, formosae, vivant et mulieres, tenerae, amabiles!")
-print("Vivat et respublica, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
-print("Alma Mater floreat, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
+print("Vivat et respublnca, et qui illam regit. Vivat nostra civitas, Maecenatum caritas, quae nos hic protegit!")
+print("Alma Mater florent, quae nos educavit, caros et commilitones, dissitas in regiones, sparsos congregavit!")
 
 vim.wo.number = true;
 vim.wo.relativenumber = true;

@@ -7,15 +7,17 @@ return{
 			[[
 					s(
 					{
-						trig = <>,
-						dscr = <>,
+						trig = "<>",
+						dscr = "<>",
 					},
+					{
 					<>
+					}
 					),
-			]], { i(1), i(2), i(0)} , { delimiters = "<>"}
+			]], { i(1, 'trigge'), i(2, "An Example Snippet (Press Tab)"), i(0, "t({\"sample\"})")} , { delimiters = "<>"}
 		),
 		{
-			callbacks = 
+			callbacks =
 				{
 					[-1] = {
 						[events.enter] = function(node, _event_args)

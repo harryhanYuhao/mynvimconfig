@@ -1,3 +1,6 @@
+-------
+-- WARNING need to run :PackerSync everytime this file is changed 
+-------
 return require('packer').startup(function(use)
 	----------------------
 	-- Core Plugins
@@ -6,7 +9,44 @@ return require('packer').startup(function(use)
 	use "nvim-lua/plenary.nvim"
 	use({"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/popup.nvim"}}})
 	use {
-		"nvim-treesitter/nvim-treesitter", 
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require'nvim-treesitter.configs'.setup {
+				ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+				ignore_install = { "latex" },
+				sync_install = false,
+				auto_install = true,
+				highlight = {
+					enable = true,
+					disable = function(lang, buf)
+						local max_filesize = 100 * 1024 -- 100 KB
+						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+						if ok and stats and stats.size > max_filesize then
+							return true
+						end
+					end,
+					additional_vim_regex_highlighting = false,
+				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "gnn", -- set to `false` to disable one of the mappings
+						node_incremental = "grn",
+						scope_incremental = "grc",
+						node_decremental = "grm",
+					},
+				},
+				textsubjects = {
+					enable = true,
+					prev_selection = ',', -- (Optional) keymap to select the previous selection
+					keymaps = {
+						['.'] = 'textsubjects-smart',
+						[';'] = 'textsubjects-container-outer',
+						['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
+					},
+				},
+			}
+		end,
 		run = function()
 			pcall(require("nvim-treesitter.install").update{ with_sync = true})
 		end,
@@ -46,36 +86,34 @@ return require('packer').startup(function(use)
 	use "morhetz/gruvbox"
 	use "shaunsingh/nord.nvim"
 	use {"nvim-lualine/lualine.nvim",
-		config = function()
-			require('lualine').setup {
-				options = {
-					theme = 'gruvbox',
-					icons_enabled = false,
-					component_separators = '|',
-					section_separators = '',
-				},
-			}
-		end
-	}
+	config = function()
+		require('lualine').setup {
+			options = {
+				theme = 'gruvbox',
+				icons_enabled = false,
+				component_separators = '|',
+				section_separators = '',
+			},
+		}
+	end
+}
 
-	-- TODO: Update to indent blankline v3
-	-- Note For packer to work, nvim shall be closed and :PackerSync shall be run
-	use {"lukas-reineke/indent-blankline.nvim",
-		commit = "9637670",
-		-- config for version 2 (in use)
-		config = function()
-			require('indent_blankline').setup {
-				char = '┊',
-				show_trailing_blankline_indent = false,
-			}
-		end,
-		-- config for version 3
-		-- config = function()
-		--   require "ibl".setup()
-		--   require "ibl".update({
-		--     indent = { char = "┊" },
-		--   })
-		-- end,
+use {"lukas-reineke/indent-blankline.nvim",
+commit = "9637670",
+-- config for version 2 (in use)
+config = function()
+	require('indent_blankline').setup {
+		char = '┊',
+		show_trailing_blankline_indent = false,
+	}
+end,
+-- config for version 3
+-- config = function()
+--   require "ibl".setup()
+--   require "ibl".update({
+--     indent = { char = "┊" },
+--   })
+-- end,
 	}
 	use {
 		"nvim-tree/nvim-tree.lua",
@@ -89,66 +127,66 @@ return require('packer').startup(function(use)
 
 	use({
 		"L3MON4D3/LuaSnip",
-		tag = "v2.*", 
+		tag = "v2.*",
 		run = "make install_jsregexp"
 	})
 
 	-- LSP Related Plugins
 	use { -- Autocompletion
-		'hrsh7th/nvim-cmp',
-		requires = { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-	}
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
+	'hrsh7th/nvim-cmp',
+	requires = { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+}
+use 'hrsh7th/cmp-buffer'
+use 'hrsh7th/cmp-path'
+use 'hrsh7th/cmp-cmdline'
 
-	use {
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup({
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗"
-					}
+use {
+	"williamboman/mason.nvim",
+	config = function()
+		require("mason").setup({
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗"
 				}
-			})
-		end,
+			}
+		})
+	end,
+}
+
+use {
+	'VonHeikemen/lsp-zero.nvim',
+	branch = 'v3.x',
+	requires = {
+		--  Uncomment these if you want to manage the language servers from neovim
+		{'williamboman/mason.nvim'},
+		{'williamboman/mason-lspconfig.nvim'},
+
+		-- LSP Support
+		{'neovim/nvim-lspconfig'},
+		-- Autocompletion
+		{'hrsh7th/nvim-cmp'},
+		{'hrsh7th/cmp-nvim-lsp'},
+		{'L3MON4D3/LuaSnip'},
 	}
+}
 
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		requires = {
-			--  Uncomment these if you want to manage the language servers from neovim
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+-- Latex
+use "lervag/vimtex"
 
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'L3MON4D3/LuaSnip'},
-		}
-	}
-
-	-- Latex
-	use "lervag/vimtex"
-
-	use {'github/copilot.vim', 
-		branch = 'release' ,
-		config = function()
-			vim.cmd[[let g:copilot_filetypes={
-			\'cpp': v:false,
-			\'c': v:false,
-			\'haskell': v:false,
-			\'py': v:true,
-			\'markdown': v:true,
-			\'txt': v:true,
-			\}]]
-		end,
-	}
+use {'github/copilot.vim', 
+branch = 'release' ,
+config = function()
+	vim.cmd[[let g:copilot_filetypes={
+		\'cpp': v:false,
+		\'c': v:false,
+		\'haskell': v:false,
+		\'py': v:true,
+		\'markdown': v:true,
+		\'txt': v:true,
+		\}]]
+	end,
+}
 end)
 

@@ -1,11 +1,12 @@
 -- This file contains the global key maps for nvim text editors.
-
+--------------------------
+-- UTILS
+--------------------------
+-- Select all
 vim.keymap.set('n', '<C-a>', 'G$vgg0', {noremap = true})  -- select all
-
+-- Save file
 vim.keymap.set('n', '<F1>',':w <CR>', {noremap = true, silent = false})
-vim.keymap.set('n', '\\<F1><F1>',':wq <CR>', {noremap = true, silent = false})
 vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
-vim.keymap.set('n', '<leader>s', ')i<CR><Esc>', {noremap = true, silent=false})
 
 -- find/replace keymaps
 vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})

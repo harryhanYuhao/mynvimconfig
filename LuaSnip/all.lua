@@ -12,7 +12,7 @@ return {
 	s(
 		{ trig = "gitignore" },
 		{ 
-		t({
+			t({
 				"*.latexmk",
 				"*.aux",
 				"*.log",
