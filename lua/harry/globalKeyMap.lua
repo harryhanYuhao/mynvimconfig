@@ -58,12 +58,12 @@ vim.keymap.set('n',  '<leader>/', function()
 		})
 end, {desc = '[/] Fuzzily search in current buffer'})
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = '[F]ind [F]iles'})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = '[F]ind [G]rep'})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = '[F]ind [B]uffers'})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = '[F]ind [H]elp'})
-vim.keymap.set('n', '<leader>fi', builtin.git_files, {desc = '[F]ind G[I]t files'})
-vim.keymap.set('n', '<leader>fr', builtin.registers, {desc = '[F]ind [R]egisters'})
+vim.keymap.set('n', '<leader>f', builtin.find_files, {desc = '[S]earch [F]iles'})
+vim.keymap.set('n', '<leader>st', builtin.live_grep, {desc = '[S]earch [G]rep'})
+vim.keymap.set('n', '<leader>sb', builtin.buffers, {desc = '[S]earch [B]uffers'})
+vim.keymap.set('n', '<leader>sh', builtin.help_tags, {desc = '[S]earch [H]elp'})
+vim.keymap.set('n', '<leader>si', builtin.git_files, {desc = '[S]earch G[I]t files'})
+vim.keymap.set('n', '<leader>sr', builtin.registers, {desc = '[S]earch [R]egisters'})
 
 
 --------------------------
