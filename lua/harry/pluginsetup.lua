@@ -1,5 +1,5 @@
 -------
--- WARNING need to run :PackerSync everytime this file is changed 
+-- WARNING need to run :PackerSync everytime this file is changed
 -------
 return require('packer').startup(function(use)
 	----------------------
@@ -7,11 +7,11 @@ return require('packer').startup(function(use)
 	----------------------
 	use "wbthomason/packer.nvim"
 	use "nvim-lua/plenary.nvim"
-	use({"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/popup.nvim"}}})
+	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" } } })
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
-			require'nvim-treesitter.configs'.setup {
+			require 'nvim-treesitter.configs'.setup {
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
 				ignore_install = { "latex" },
 				sync_install = false,
@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
 			}
 		end,
 		run = function()
-			pcall(require("nvim-treesitter.install").update{ with_sync = true})
+			pcall(require("nvim-treesitter.install").update { with_sync = true })
 		end,
 	}
 	use {
@@ -62,6 +62,15 @@ return require('packer').startup(function(use)
 	-- Improve Usability
 	----------------------
 	use 'mbbill/undotree'
+	use { -- Hopping: mouse alternative
+		"phaazon/hop.nvim",
+		config = function()
+			require("hop").setup()
+			vim.api.nvim_set_keymap("n", "t", ":HopChar2<cr>", { silent = true })
+			vim.api.nvim_set_keymap("n", "T", ":HopWord<cr>", { silent = true })
+		end,
+
+	}
 	--  Commenting
 	use {
 		'numToStr/Comment.nvim',
@@ -75,9 +84,15 @@ return require('packer').startup(function(use)
 	----------------------
 	-- Git Related Plugins
 	----------------------
-	use "tpope/vim-fugitive"
-	use "tpope/vim-rhubarb"
-	use "lewis6991/gitsigns.nvim"
+	-- use "tpope/vim-fugitive"
+	-- use "tpope/vim-rhubarb"
+	use {
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
+
 
 	----------------------
 	-- UI Related Plugins
@@ -85,35 +100,35 @@ return require('packer').startup(function(use)
 	use "navarasu/onedark.nvim"
 	use "morhetz/gruvbox"
 	use "shaunsingh/nord.nvim"
-	use {"nvim-lualine/lualine.nvim",
-	config = function()
-		require('lualine').setup {
-			options = {
-				theme = 'gruvbox',
-				icons_enabled = false,
-				component_separators = '|',
-				section_separators = '',
-			},
-		}
-	end
-}
-
-use {"lukas-reineke/indent-blankline.nvim",
-commit = "9637670",
--- config for version 2 (in use)
-config = function()
-	require('indent_blankline').setup {
-		char = '┊',
-		show_trailing_blankline_indent = false,
+	use { "nvim-lualine/lualine.nvim",
+		config = function()
+			require('lualine').setup {
+				options = {
+					theme = 'gruvbox',
+					icons_enabled = false,
+					component_separators = '|',
+					section_separators = '',
+				},
+			}
+		end
 	}
-end,
--- config for version 3
--- config = function()
---   require "ibl".setup()
---   require "ibl".update({
---     indent = { char = "┊" },
---   })
--- end,
+
+	use { "lukas-reineke/indent-blankline.nvim",
+		commit = "9637670",
+		-- config for version 2 (in use)
+		config = function()
+			require('indent_blankline').setup {
+				char = '┊',
+				show_trailing_blankline_indent = false,
+			}
+		end,
+		-- config for version 3
+		-- config = function()
+		--   require "ibl".setup()
+		--   require "ibl".update({
+		--     indent = { char = "┊" },
+		--   })
+		-- end,
 	}
 	use {
 		"nvim-tree/nvim-tree.lua",
@@ -133,52 +148,51 @@ end,
 
 	-- LSP Related Plugins
 	use { -- Autocompletion
-	'hrsh7th/nvim-cmp',
-	requires = { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-}
-use 'hrsh7th/cmp-buffer'
-use 'hrsh7th/cmp-path'
-use 'hrsh7th/cmp-cmdline'
-
-use {
-	"williamboman/mason.nvim",
-	config = function()
-		require("mason").setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗"
-				}
-			}
-		})
-	end,
-}
-
-use {
-	'VonHeikemen/lsp-zero.nvim',
-	branch = 'v3.x',
-	requires = {
-		--  Uncomment these if you want to manage the language servers from neovim
-		{'williamboman/mason.nvim'},
-		{'williamboman/mason-lspconfig.nvim'},
-
-		-- LSP Support
-		{'neovim/nvim-lspconfig'},
-		-- Autocompletion
-		{'hrsh7th/nvim-cmp'},
-		{'hrsh7th/cmp-nvim-lsp'},
-		{'L3MON4D3/LuaSnip'},
+		'hrsh7th/nvim-cmp',
+		requires = { 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
 	}
-}
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
 
--- Latex
-use "lervag/vimtex"
+	use {
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗"
+					}
+				}
+			})
+		end,
+	}
 
-use {'github/copilot.vim', 
-branch = 'release' ,
-config = function()
-	vim.cmd[[let g:copilot_filetypes={
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			--  Uncomment these if you want to manage the language servers from neovim
+			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason-lspconfig.nvim' },
+
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'L3MON4D3/LuaSnip' },
+		}
+	}
+	-- Latex
+	use "lervag/vimtex"
+
+	use { 'github/copilot.vim',
+		branch = 'release',
+		config = function()
+			vim.cmd [[let g:copilot_filetypes={
 		\'cpp': v:false,
 		\'c': v:false,
 		\'haskell': v:false,
@@ -186,7 +200,6 @@ config = function()
 		\'markdown': v:true,
 		\'txt': v:true,
 		\}]]
-	end,
-}
+		end,
+	}
 end)
-
