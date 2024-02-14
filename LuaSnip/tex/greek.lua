@@ -27,94 +27,217 @@ return{
 	),
 
 	s({trig=";z"},
-		{
-			t("\\zeta"),
-		}
+	{
+		t("\\zeta"),
+	}
 	),
 	s({trig=";h"},
-		{
-			t("\\eta"),
-		}
+	{
+		t("\\eta"),
+	}
 	),
-	s({trig=";q"},
-		{
-			t("\\theta"),
-		}
+	s({trig=";u"},
+	{
+		t("\\theta"),
+	}
 	),
 	s({trig=";i"},
-		{
-			t("\\iota"),
-		}
+	{
+		t("\\iota"),
+	}
 	),
 	s({trig=";k"},
-		{
-			t("\\kappa"),
-		}
+	{
+		t("\\kappa"),
+	}
 	),
 	s({trig=";l"},
-		{
-			t("\\lambda"),
-		}
+	{
+		t("\\lambda"),
+	}
 	),
 	s({trig=";m"},
-		{
-			t("\\mu"),
-		}
+	{
+		t("\\mu"),
+	}
 	),
 	s({trig=";n"},
-		{
-			t("\\nu"),
-		}
+	{
+		t("\\nu"),
+	}
 	),
 	s({trig=";x"},
-		{
-			t("\\xi"),
-		}
+	{
+		t("\\chi"),
+	}
 	),
 	s({trig=";o"},
-		{
-			t("\\omicron"),
-		}
+	{
+		t("\\omicron"),
+	}
 	),
 	s({trig=";p"},
-		{
-			t("\\pi"),
-		}
+	{
+		t("\\pi"),
+	}
 	),
 	s({trig=";r"},
-		{
-			t("\\rho"),
-		}
+	{
+		t("\\rho"),
+	}
 	),
 	s({trig=";s"},
-		{
-			t("\\sigma"),
-		}
+	{
+		t("\\sigma"),
+	}
 	),
 	s({trig=";t"},
-		{
-			t("\\tau"),
-		}
+	{
+		t("\\tau"),
+	}
 	),
 	s({trig=";y"},
-		{
-			t("\\upsilon"),
-		}
+	{
+		t("\\upsilon"),
+	}
 	),
 	s({trig=";f"},
-		{
-			t("\\phi"),
-		}
+	{
+		t("\\phi"),
+	}
 	),
 	s({trig=";c"},
-		{
-			t("\\chi"),
-		}
+	{
+		t("\\psi"),
+	}
+	),
+	s( { trig = ";j"},
+	{
+		t({"\\xi"})
+	}
 	),
 	s({trig=";w"},
-		{
-			t("\\omega"),
-		}
+	{
+		t("\\omega"),
+	}
 	),
-
+	s({trig=";A"},
+	{
+		t("\\Alpha"),
+	}
+	),
+	s({trig=";B"},
+	{
+		t("\\Beta"),
+	}
+	),
+	s({trig=";G"},
+	{
+		t("\\Gamma"),
+	}
+	),
+	s({trig=";D"},
+	{
+		t("\\Delta"),
+	}
+	),
+	s({trig=";E"},
+	{
+		t("\\Epsilon"),
+	}
+	),
+	s({trig=";Z"},
+	{
+		t("\\Zeta"),
+	}
+	),
+	s({trig=";H"},
+	{
+		t("\\Eta"),
+	}
+	),
+	s({trig=";U"},
+	{
+		t("\\Theta"),
+	}
+	),
+	s({trig=";I"},
+	{
+		t("\\Iota"),
+	}
+	),
+	s({trig=";K"},
+	{
+		t("\\Kappa"),
+	}
+	),
+	s({trig=";L"},
+	{
+		t("\\Lambda"),
+	}
+	),
+	s({trig=";M"},
+	{
+		t("\\Mu"),
+	}
+	),
+	s({trig=";N"},
+	{
+		t("\\Nu"),
+	}
+	),
+	s({trig=";X"},
+	{
+		t("\\Chi"),
+	}
+	),
+	s({trig=";O"},
+	{
+		t("\\Omicron"),
+	}
+	),
+	s({trig=";P"},
+	{
+		t("\\Pi"),
+	}
+	),
+	s({trig=";R"},
+	{
+		t("\\Rho"),
+	}
+	),
+	s({trig=";S"},
+	{
+		t("\\Sigma"),
+	}
+	),
+	s({trig=";T"},
+	{
+		t("\\Tau"),
+	}
+	),
+	s({trig=";Y"},
+	{
+		t("\\Upsilon"),
+	}
+	),
+	s({trig=";F"},
+	{
+		t("\\Phi"),
+	}
+	),
+	s({trig=";C"},
+	{
+		t("\\Chi"),
+	}),
+	s({trig=";J"},
+	{
+		t("\\Xi"),
+	}
+	),
+	s({trig=";W"},
+	{
+		t("\\Omega"),
+	}
+	),
 }

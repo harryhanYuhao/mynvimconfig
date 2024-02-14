@@ -79,7 +79,21 @@ return require('packer').startup(function(use)
 		end
 	}
 	-- TODO Comment
-	use "folke/todo-comments.nvim"
+	use { "folke/todo-comments.nvim",
+		config = function()
+			require("todo-comments").setup({
+				signs = true,
+				keywords = {
+					HACK = { icon = " ", color = "warning", alt = { "DEBUG" } },
+				},
+				highlight = {
+					before = "bg", -- "fg" or "bg" or empty
+					keyword = "wide", -- "wide" or "gui" or "guitext"
+					after = "fg", -- "fg" or "bg" or empty
+				},
+			})
+		end,
+	}
 
 	----------------------
 	-- Git Related Plugins
@@ -202,4 +216,8 @@ return require('packer').startup(function(use)
 		\}]]
 		end,
 	}
+	use "fatih/vim-go"
+
+	-- Wakatime
+	use { 'wakatime/vim-wakatime' }
 end)

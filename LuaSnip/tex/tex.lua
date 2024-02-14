@@ -68,7 +68,6 @@ function hhyh.refactoredSearch(findMain, findPictureDir, pictureDirectoryName)
       return {"No Picture Found"}
     end
   end
-	
 	searchDirectory = "./"
 
   if findMain then
@@ -102,6 +101,11 @@ return{
 	s({trig="mc", name="Mathematical Caligraphy ", dsc="math caligraphy"},
 		{
 			t({"\\mathcal{"}),i(1),t({"}"}), i(0),
+		}
+	),
+	s({trig="pa", name="partial", dsc="partial sign"},
+		{
+			t({"\\partial "}), 
 		}
 	),
 	-- rightarrow
