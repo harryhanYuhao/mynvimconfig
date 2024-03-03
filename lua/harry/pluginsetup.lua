@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 		config = function()
 			require 'nvim-treesitter.configs'.setup {
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-				ignore_install = { "latex" },
+				ignore_install = { "latex" , "md"},
 				sync_install = false,
 				auto_install = true,
 				highlight = {
@@ -50,6 +50,14 @@ return require('packer').startup(function(use)
 		run = function()
 			pcall(require("nvim-treesitter.install").update { with_sync = true })
 		end,
+		cond = function()
+			local filetype = vim.fn.expand('%:e')
+			if filetype == 'tex' or filetype == 'md' then
+				return false
+			else 
+				return true
+			end
+		end
 	}
 	use {
 		'nvim-treesitter/nvim-treesitter-textobjects',

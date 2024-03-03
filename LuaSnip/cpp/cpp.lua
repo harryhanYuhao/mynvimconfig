@@ -1,9 +1,8 @@
 return{
-	s({trig='nnn'},
+	s({trig='init'},
 		{
 			t({
 				"#include <iostream>",
-				"#include <stdio.h>",
 				"#include <vector>",
 				"",
 				"int main() {//int argc, char *argv[]",
