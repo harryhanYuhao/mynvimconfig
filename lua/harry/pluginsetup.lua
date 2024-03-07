@@ -228,4 +228,5 @@ return require('packer').startup(function(use)
 
 	-- Wakatime
 	use { 'wakatime/vim-wakatime' }
+	use { 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim' }
 end)
