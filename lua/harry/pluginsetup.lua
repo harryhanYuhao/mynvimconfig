@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
 				ignore_install = { "latex" , "md"},
 				sync_install = false,
-				auto_install = true,
+				auto_install = false,
 				highlight = {
 					enable = true,
 					disable = function(lang, buf)
@@ -102,6 +102,12 @@ return require('packer').startup(function(use)
 			})
 		end,
 	}
+	use {
+		'm4xshen/autoclose.nvim',
+		config = function()
+			require('autoclose').setup()
+		end
+	}
 
 	----------------------
 	-- Git Related Plugins
@@ -122,7 +128,9 @@ return require('packer').startup(function(use)
 	use "navarasu/onedark.nvim"
 	use "morhetz/gruvbox"
 	use "shaunsingh/nord.nvim"
+	use "savq/melange-nvim"
 	use { "nvim-lualine/lualine.nvim",
+
 		config = function()
 			require('lualine').setup {
 				options = {
@@ -228,5 +236,5 @@ return require('packer').startup(function(use)
 
 	-- Wakatime
 	use { 'wakatime/vim-wakatime' }
-	use { 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim' }
+	-- use { 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim' }
 end)

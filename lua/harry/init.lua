@@ -1,7 +1,7 @@
 require('harry.pluginsetup')
 require('harry.plugins.telescope')
 require('harry.plugins.luasnip')
-require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
+require("luasnip.loaders.from_lua").lazy_load({paths =vim.fn.stdpath "config" .. "/LuaSnip/"})
 require("harry.plugins.cmp")
 require("harry.plugins.todo")
 require('harry.plugins.lsp')
@@ -73,11 +73,10 @@ set path+=.
 set path+=..
 set path+=/usr/include/
 ]]
-
 --colorscheme
 -- The color scheme are depending on plugins
 vim.cmd [[let g:gruvbox_contrast_dark = 'hard']] -- vim.cmd [[ ]] will run vim code in lua file.
---Available colorschemes: gruvbox, nord, 
+--Available colorschemes: gruvbox, nord, onedark
 vim.cmd [[colorscheme gruvbox]] -- set colorscheme, gruvbox is from morhetz/gruvbox
 vim.cmd [[highlight! Normal guibg=NONE ctermbg=NONE]] -- set background to none
 vim.cmd [[hi! link SignColumn LineNr]]

@@ -45,10 +45,8 @@ ls.config.set_config {
 -- smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
 -- ]]
 
-vim.keymap.set("i", "<S-Tab>", "<Plug>luasnip-jump-prev", { silent = true, noremap = true })
-
 -- If jumpable, expand, else, tab
-vim.keymap.set({ "i", "s" }, "<Tab>", function()
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	else
@@ -65,7 +63,7 @@ vim.keymap.set({ "i", "s" }, "<C-f>", function()
 	end
 end, { silent = true, noremap = true })
 
-vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
 	if ls.jumpable(-1) then
 		ls.jump(-1)
 	else
@@ -80,7 +78,3 @@ vim.keymap.set("i", "<c-l>", function()
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<c-l>", true, false, true), "n", true)
 	end
 end, { silent = true, noremap = true })
-
-
--- Use vim api to insert bbb
--- vim.keymap.set("n", "<leader>ss", "<cmd>source ~/.config/nvim/lua/harry/plugins/luasnip.lua<cr>", {silent = false, noremap = true})

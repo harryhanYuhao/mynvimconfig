@@ -21,7 +21,7 @@ end
 vim.keymap.set('i', '<F3>', build(), {noremap = true})
 -- vim.keymap.set('i', '<F3>', '<Esc>:w<CR>:!gcc <C-R>% -lm<CR>', {noremap = true}) -- -w to hide warnings
 vim.keymap.set('n', '<F3>', ':!./a.out<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>fo', ':w<CR>:!clang-format --style=LLVM -i %<CR>', {noremap = true})
+vim.keymap.set('n', '<leader>lf', ':w<CR>:!clang-format -i %<CR>', {noremap = true})
 
 -- create autocommand to automatically format the c file with	`clang-format --style=LLVM -i %` when saving the buffer
 

@@ -10,9 +10,6 @@ vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
 
 -- find/replace keymaps
 vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})
--- Editor keymaps
-vim.keymap.set('i', '<C-o>', '{<Esc>o}<Esc>ko', {noremap = true, silent = false})
-vim.keymap.set('n', '<leader><C-o>', 'a{<Esc>o}<Esc>ko', {noremap = true, silent = false})
 
 -- visual mode select/paste keymaps
 vim.keymap.set('v', '<leader>y', '"+y', {noremap = true, silent = false})
@@ -62,7 +59,7 @@ vim.keymap.set('n', '<leader>f', builtin.find_files, {desc = '[S]earch [F]iles'}
 vim.keymap.set('n', '<leader>st', builtin.live_grep, {desc = '[S]earch [G]rep'})
 vim.keymap.set('n', '<leader>sb', builtin.buffers, {desc = '[S]earch [B]uffers'})
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, {desc = '[S]earch [H]elp'})
-vim.keymap.set('n', '<leader>si', builtin.git_files, {desc = '[S]earch G[I]t files'})
+vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, {desc = '[S]earch G[I]t files'})
 vim.keymap.set('n', '<leader>sr', builtin.registers, {desc = '[S]earch [R]egisters'})
 
 
