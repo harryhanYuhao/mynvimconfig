@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 		config = function()
 			require 'nvim-treesitter.configs'.setup {
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-				ignore_install = { "latex" , "md"},
+				ignore_install = { "latex", "md" },
 				sync_install = false,
 				auto_install = false,
 				highlight = {
@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
 			local filetype = vim.fn.expand('%:e')
 			if filetype == 'tex' or filetype == 'md' then
 				return false
-			else 
+			else
 				return true
 			end
 		end
@@ -237,4 +237,14 @@ return require('packer').startup(function(use)
 	-- Wakatime
 	use { 'wakatime/vim-wakatime' }
 	-- use { 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim' }
+	use {
+		'preservim/vim-markdown',
+		ft = 'markdown',
+		config = function()
+			vim.cmd [[
+			let g:vim_markdown_folding_disabled = 1
+			" let g:vim_markdown_folding_level = 4
+			]]
+		end,
+	}
 end)
