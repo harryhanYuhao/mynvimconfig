@@ -483,7 +483,6 @@ return {
 	-- 		}
 	-- 	)
 	-- ),
-
 	s(
 		{
 			trig = "Picture_Insert_include",
@@ -503,13 +502,14 @@ return {
 					hhyh.my_LuaSnipBuffer[1] = hhyh.refactoredSearch(false, true)
 					return ""
 				end),
-				i(1, "Caption"), rep(1),
+				i(1, "Caption"), 
 				d(2, -- dynamic node required here for checking updated local variable
 					function()
 						return sn(nil, {
 							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
 						})
-					end, { 1 })
+					end, { 1 }), 
+				rep(1)
 			},
 			{ delimiters = "<>" }
 		) -- for fmt()
@@ -533,13 +533,14 @@ return {
 					hhyh.my_LuaSnipBuffer[1] = hhyh.refactoredSearch()
 					return ""
 				end),
-				i(1, "Caption"), rep(1),
+				i(1, "Caption"), 
 				d(2, -- dynamic node required here for checking updated local variable
 					function()
 						return sn(nil, {
 							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
 						})
-					end, { 1 })
+					end, { 1 }),
+				rep(1)
 			},
 			{ delimiters = "<>" }
 		) -- for fmt()
