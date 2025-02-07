@@ -102,6 +102,11 @@ return require('packer').startup(function(use)
 			})
 		end,
 	}
+	use { "catppuccin/nvim", as = "catppuccin" }
+	use { "d00h/nvim-rusticated"}
+	use { "yorik1984/newpaper.nvim"}
+	use { "EdenEast/nightfox.nvim"}
+	use ({ 'projekt0n/github-nvim-theme' })
 	use {
 		'm4xshen/autoclose.nvim',
 		config = function()

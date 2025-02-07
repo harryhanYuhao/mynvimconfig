@@ -5,8 +5,8 @@
 -- Select all
 vim.keymap.set('n', '<C-a>', 'G$vgg0', {noremap = true})  -- select all
 -- Save file
-vim.keymap.set('n', '<F1>',':w <CR>', {noremap = true, silent = false})
-vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
+vim.keymap.set('n', '<F2>',':w <CR>', {noremap = true, silent = false})
+-- vim.keymap.set('i', '<F1>','<Esc>:w<CR>a', {noremap = true, silent = false})
 
 -- find/replace keymaps
 vim.keymap.set('n', '<leader>no', ':noh<CR>', {noremap = true, silent = false})

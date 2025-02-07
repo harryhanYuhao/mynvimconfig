@@ -255,6 +255,21 @@ return {
 			{ delimiters = "<>" }
 		)
 	),
+	s({ trig = "align", dscr = "LaTeX align environment" },
+		fmt( -- The snippet code actually looks like the equation environment it produces.
+		-- [[ ]] are lua string delimiters
+			[[
+			\begin{align}
+				<>
+			\end{align}
+			]],
+			-- The insert node is placed in the <> angle brackets
+			{ i(1) },
+			-- This is where to specify that angle brackets are used as node positions.
+			-- To escape delimiter, repeat it twice
+			{ delimiters = "<>" }
+		)
+	),
 	s({ trig = "eq", dscr = "A LaTeX equation environment" },
 		fmt( -- The snippet code actually looks like the equation environment it produces.
 		-- [[ ]] are lua string delimiters
@@ -301,6 +316,111 @@ return {
 			-- 		}
 			-- condition = conds_expand.line_begin,
 		}
+	),
+	s(
+		{
+			trig = "enum",
+			name = "enumerate",
+			regTrig = false,
+		},
+		fmt(
+			[[
+			\begin{enumerate}
+				\item <>
+			\end{enumerate}
+			]],
+			{
+				i(0),
+			},
+			{
+				delimiters = "<>"
+			}
+		),
+		{}
+	),
+	s(
+		{
+			trig = "coro",
+			name = "corollary",
+			regTrig = true,
+		},
+		fmt(
+			[[
+			\begin{corollary}[<>]
+			<>
+			\end{corollary}
+			]],
+			{
+				i(1), i(0),
+			},
+			{
+				delimiters = "<>"
+			}
+		),
+		{}
+	),
+	s(
+		{
+			trig = "lemm",
+			name = "Lemma",
+			regTrig = true,
+		},
+		fmt(
+			[[
+			\begin{lemma}[<>]
+			<>
+			\end{lemma}
+			]],
+			{
+				i(1), i(0),
+			},
+			{
+				delimiters = "<>"
+			}
+		),
+		{}
+	),
+	s(
+		{
+			trig = "theo",
+			name = "Theorem",
+			regTrig = true,
+		},
+		fmt(
+			[[
+			\begin{theorem}[<>]
+			<>
+			\end{theorem}
+			]],
+			{
+				i(1), i(0),
+			},
+			{
+				delimiters = "<>"
+			}
+		),
+		{}
+	),
+	s(
+		{
+			trig = "defi",
+			name = "Definition",
+			regTrig = true,
+		},
+		fmt(
+			[[
+			\begin{definition}[<>]
+			<>
+			\end{definition}
+			]],
+			{
+				i(1), i(0),
+			},
+			{
+				delimiters = "<>"
+			}
+		),
+		{}
 	),
 	s({
 			trig = "([A-z0-9]+)/([A-z0-9]+)",
