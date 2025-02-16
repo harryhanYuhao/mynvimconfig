@@ -492,9 +492,9 @@ return {
 			[[
 			\begin{figure}[htbp]
 				\centering<>
-				\label{fig:<>}
 				\includegraphics[width=0.8\textwidth]{<>}
 				\caption{<>}
+				\label{fig:<>}
 			\end{figure}
 			]],
 			{
@@ -502,13 +502,13 @@ return {
 					hhyh.my_LuaSnipBuffer[1] = hhyh.refactoredSearch(false, true)
 					return ""
 				end),
-				i(1, "Caption"), 
 				d(2, -- dynamic node required here for checking updated local variable
 					function()
 						return sn(nil, {
 							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
 						})
 					end, { 1 }), 
+				i(1, "Caption"), 
 				rep(1)
 			},
 			{ delimiters = "<>" }
@@ -523,9 +523,9 @@ return {
 			[[
 			\begin{figure}[htbp]
 				\centering<>
-				\label{fig:<>}
 				\includegraphics[width=0.8\textwidth]{<>}
 				\caption{<>}
+				\label{fig:<>}
 			\end{figure}
 			]],
 			{
@@ -533,13 +533,13 @@ return {
 					hhyh.my_LuaSnipBuffer[1] = hhyh.refactoredSearch()
 					return ""
 				end),
-				i(1, "Caption"), 
 				d(2, -- dynamic node required here for checking updated local variable
 					function()
 						return sn(nil, {
 							c(1, hhyh.toTextNode(hhyh.my_LuaSnipBuffer[1]))
 						})
 					end, { 1 }),
+				i(1, "Caption"), 
 				rep(1)
 			},
 			{ delimiters = "<>" }

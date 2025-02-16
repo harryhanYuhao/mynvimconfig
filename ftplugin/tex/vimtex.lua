@@ -1,3 +1,4 @@
+-- vim.g.mapleader = ' ' -- set leader key to space
 vim.cmd[[let g:vimtex_view_method = 'zathura']]
 vim.cmd[[syntax enable]]
 vim.cmd[[filetype plugin indent on]]
@@ -10,6 +11,7 @@ vim.cmd[[let g:vimtex_quickfix_ignore_filters = [
 	\'Overfull',
 	\'LaTeX Font Warning',
 	\'LaTeX Warning: Label(s) may have changed', 
+	\'Package fancyhdr Warning:',
 	\]
 ]]
 --vim.cmd[[let g:vimtex_quickfix_open_on_warning = 0]]

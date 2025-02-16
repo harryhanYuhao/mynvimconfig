@@ -45,7 +45,7 @@ vim.opt.smartcase = true -- ignore case unless there is a capital letter in the 
 
 vim.opt.iskeyword:append('-') --consider string-string as a word
 vim.opt.iskeyword:append('_') --consider string_string as a word
--- vim.opt.iskeyword:append('.') --consider string/string as a wordlil
+-- vim.opt.iskeyword:append('.') --consider string/string as a word
 
 -- vim.o.termguicolors = true -- enable 24-bit RGB colors
 
@@ -55,6 +55,7 @@ vim.o.mouse = 'a' -- enable mouse
 
 -- Keymaps
 vim.g.mapleader = ' ' -- set leader key to space
+vim.g.maplocalleader = ' ' -- set local leader key to space
 
 require('harry.globalKeyMap')
 
