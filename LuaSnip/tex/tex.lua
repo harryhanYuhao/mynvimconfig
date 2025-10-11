@@ -255,6 +255,21 @@ return {
 			{ delimiters = "<>" }
 		)
 	),
+	s({ trig = "aligns", dscr = "LaTeX align start environment" },
+		fmt( -- The snippet code actually looks like the equation environment it produces.
+		-- [[ ]] are lua string delimiters
+			[[
+			\begin{align*}
+				<>
+			\end{align*}
+			]],
+			-- The insert node is placed in the <> angle brackets
+			{ i(1) },
+			-- This is where to specify that angle brackets are used as node positions.
+			-- To escape delimiter, repeat it twice
+			{ delimiters = "<>" }
+		)
+	),
 	s({ trig = "align", dscr = "LaTeX align environment" },
 		fmt( -- The snippet code actually looks like the equation environment it produces.
 		-- [[ ]] are lua string delimiters
@@ -442,6 +457,22 @@ return {
 			return
 				"\\frac{" .. snip.captures[1] .. "}" .. "{" .. snip.captures[2] .. "}"
 		end, {})
+	),
+	s(
+		{
+			trig = "(s+)ecs",
+			dscr = "(sub)section*",
+			regTrig = true,
+			docstring = [[Expand secs to \section*{}, ssec to \subsection*{}, sssec to \subsubsection*{}, etc.]]
+		},
+		{
+			f(function(args, snip)
+				local cap = snip.captures[1]
+				local prefix = ""
+				for i = 1, #cap - 1 do prefix = prefix .. "sub" end
+				return "\\" .. prefix .. "section*" .. "{"
+			end, {}),
+			i(1, "section title"), t({ "}", "" }) }
 	),
 	s(
 		{

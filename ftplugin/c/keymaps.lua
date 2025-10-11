@@ -1,6 +1,9 @@
 function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
+	local f = io.open(name, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else return false end
 end
 
 local handle = io.popen('echo $HOME')
@@ -11,20 +14,18 @@ handle:close()
 -- the local home variable records the home directory of the user
 
 function build()
-	if file_exists(home.."/psu/bin/myc") then
+	if file_exists(home .. "/psu/bin/myc") then
 		return "<Esc>:w<CR>:!myc <C-R>% <CR>"
 	else
 		return "<Esc>:w<CR>:!gcc <C-R>% -lm<CR>"
 	end
 end
 
-vim.keymap.set('i', '<F3>', build(), {noremap = true})
+vim.keymap.set('i', '<F3>', build(), { noremap = true })
 -- vim.keymap.set('i', '<F3>', '<Esc>:w<CR>:!gcc <C-R>% -lm<CR>', {noremap = true}) -- -w to hide warnings
-vim.keymap.set('n', '<F3>', ':!./a.out<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>lf', ':w<CR>:!clang-format -i %<CR>', {noremap = true})
+vim.keymap.set('n', '<F3>', ':!./a.out<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>lf', ':w<CR>:!clang-format --style=webkit -i %<CR>', { noremap = true })
 
 -- create autocommand to automatically format the c file with	`clang-format --style=LLVM -i %` when saving the buffer
 
--- vim.cmd([[:autocmd BufEnter *.c :!clang-format --style=LLVM -i %]]) 
-
-
+-- vim.cmd([[:autocmd BufEnter *.c :!clang-format --style=LLVM -i %]])
