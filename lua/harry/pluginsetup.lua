@@ -132,7 +132,9 @@ return require('packer').startup(function(use)
 	----------------------
 	use "navarasu/onedark.nvim"
 	use "morhetz/gruvbox"
+	use "folke/tokyonight.nvim"
 	use "shaunsingh/nord.nvim"
+	use "NLKNguyen/papercolor-theme"
 	use "savq/melange-nvim"
 	use { "nvim-lualine/lualine.nvim",
 
@@ -140,6 +142,7 @@ return require('packer').startup(function(use)
 			require('lualine').setup {
 				options = {
 					theme = 'gruvbox',
+					-- theme = 'ayu_light',
 					icons_enabled = false,
 					component_separators = '|',
 					section_separators = '',

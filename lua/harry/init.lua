@@ -76,10 +76,15 @@ set path+=/usr/include/
 ]]
 --colorscheme
 -- The color scheme are depending on plugins
-vim.cmd [[let g:gruvbox_contrast_dark = 'hard']] -- vim.cmd [[ ]] will run vim code in lua file.
 --Available colorschemes: gruvbox, nord, onedark
-vim.cmd [[colorscheme gruvbox]] -- set colorscheme, gruvbox is from morhetz/gruvbox
-vim.cmd [[highlight! Normal guibg=NONE ctermbg=NONE]] -- set background to none
+-- I like 
+-- vim.cmd [[let g:gruvbox_contrast_dark = 'hard']] -- vim.cmd [[ ]] will run vim code in lua file.
+-- vim.cmd [[highlight! Normal guibg=NONE ctermbg=NONE]] -- set background to none
+-- vim.cmd [[colorscheme gruvbox]] -- set colorscheme, gruvbox is from morhetz/gruvbox
+-- Recall to change lualine theme in harry.pluginsetup.lua
+vim.cmd [[colorscheme tokyonight-day]] -- set colorscheme, gruvbox is from morhetz/gruvbox
+vim.cmd [[set background=light]] -- set colorscheme, gruvbox is from morhetz/gruvbox
+
 vim.cmd [[hi! link SignColumn LineNr]]
 
 -- Has to be here because of the autoloading of texlive
