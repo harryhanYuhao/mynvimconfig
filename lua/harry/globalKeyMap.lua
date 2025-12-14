@@ -34,7 +34,7 @@ vim.keymap.set('n', '<leader>j', '10<C-w><', { noremap = true, silent = false })
 --------------------------
 local filetype = vim.bo.filetype
 local copilot_enable = ":let g:copilot_filetypes = {'" ..
-filetype .. "': v:true}<CR>:Copilot enable<CR>:Copilot status<CR>"
+	filetype .. "': v:true}<CR>:Copilot enable<CR>:Copilot status<CR>"
 vim.keymap.set('n', '<F5>', ':Copilot disable<CR>:Copilot status<CR>', { noremap = true, silent = false }) -- disable copilot
 vim.keymap.set('n', '\\<F5>', copilot_enable, { noremap = true, silent = false })
 
@@ -56,7 +56,9 @@ vim.keymap.set('n', '<leader>/', function()
 		})
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>f', function()
+	builtin.find_files({ cwd = vim.fn.getcwd() }) -- or vim.loop.cwd()
+end, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>st', builtin.live_grep, { desc = '[S]earch [G]rep' })
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
@@ -82,7 +84,7 @@ vim.keymap.set('n', '<leader>gs', ":Git<CR>", { noremap = true, silent = false }
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ll', vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 -- go the previous/next error
 vim.keymap.set('n', '[e', function()

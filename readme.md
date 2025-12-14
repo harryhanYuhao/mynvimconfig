@@ -1,3 +1,5 @@
+# A Nvm Config
+
 ## Quickstart
 
 ### Linux or MacOS 
@@ -11,9 +13,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim 
  ``` 
 
-
 You may also use this snippet to install packer automatically. 
-
 
 To install this configuration, run the following commands in your terminal:
 
@@ -25,9 +25,16 @@ sh install.sh
 
 Remember to type `:PackerInstall` in nvim command mode. 
 
-## Dependencies 
+### Theme
 
-Nvim version 0.8
+Theme is set in `lua/harry/init.lua` in the line 
+
+```
+vim.cmd [[colorscheme tokyonight-day]] 
+vim.cmd [[set background=light]] 
+```
+
+I recommend `gruvbox` for dark theme and `tokionight-day` for light theme.
 
 ### Clipboard Support
 
@@ -35,33 +42,17 @@ Most Operation System have build in clipboard support.
 
 For some that have not (arch linux), you may need to install clipboard manager like `xclip` or `xsel`.
 
+### Folding 
+
+I recommend using `nvim-ufo` plugin with treesitter backend for folding.
+
 ### Github Copilot
 
 Node.js and a github subscription.
 
-## Install nvim
-
-See the [nvim repo](https://github.com/neovim/neovim)
-
-Here are some quick guide for installing nvim.
-
-### MacOS
-
-#### Brew
-
-`brew install nvim` 
-
-### Linux
-
-Use the package manager of your distribution.
-
-## Trouble Shooting
-
-It seems nvim lua tree-sitter auto downloading parsers is not working properly. Use `:TSInstall <language-name>` to install parsers.
-
 ## Uninstallation
 
-The nvim runtime path usually contains:
+Remove nvim with the system package manager. Optionally, remove the nvim runtime path, which usually contains:
 ```shell
 ~/.config/nvim 
 ~/.local/share/nvim
