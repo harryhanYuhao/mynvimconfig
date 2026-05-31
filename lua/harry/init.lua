@@ -6,7 +6,7 @@ require("harry.plugins.cmp")
 require("harry.plugins.todo")
 require('harry.plugins.lsp')
 
--- print("I LOVE CHEMISTRY")
+-- print("I LOVE Lulu")
 -- print("Gaudeamus igitur, iuvenes dum sumus!")
 -- print("Post iucundam iuventutem, post molestam senectutem, nos habebit humus.")
 -- print("Ubi sunt qui ante nos in mundo fuere?")
@@ -36,9 +36,9 @@ vim.opt.iskeyword:append('_') --consider string_string as a word
 
 vim.o.termguicolors = true -- enable 24-bit RGB colors
 
-vim.o.breakindent = true -- wrap text with indent
-vim.o.undofile = true    -- enable undo
-vim.o.mouse = 'a'        -- enable mouse
+vim.o.breakindent = true   -- wrap text with indent
+vim.o.undofile = true      -- enable undo
+vim.o.mouse = 'a'          -- enable mouse
 
 -- Keymaps
 vim.g.mapleader = ' '      -- set leader key to space
@@ -55,15 +55,6 @@ augroup AutoSaveFolds
 augroup END
 ]]
 -- vim.cmd[[set fillchars=fold:\ ]]
-
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
--- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 vim.cmd [[
 set path+=.
@@ -88,3 +79,4 @@ vim.cmd [[hi! link SignColumn LineNr]]
 -- Has to be here because of the autoloading of texlive
 -- Config on textlive can not be place in the ftplugin/tex.lua folder because it will be loaded after the texlive plugin.
 vim.cmd [[let g:vimtex_view_method='zathura']]
+vim.cmd [[set undodir=~/.config/mynvimconfig/undodir ]]

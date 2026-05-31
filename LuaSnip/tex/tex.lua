@@ -137,6 +137,11 @@ return {
 			t({ "\\frac{" }), i(1), t({ "}{" }), i(2), t({ "}" }), i(0),
 		}
 	),
+	s({ trig = "ag", name = "angle", dsc = "angle bracket" },
+		{
+			t({ "\\langle " }), i(1), t({ "\\rangle" }), i(0),
+		}
+	),
 	s({ trig = "fff", name = "fractionMath", dsc = "fraction" },
 		{
 			t({ "$\\frac{" }), i(1), t({ "}{" }), i(2), t({ "}$" }), i(0),
