@@ -70,15 +70,16 @@ return require('packer').startup(function(use)
 	-- Improve Usability
 	----------------------
 	use 'mbbill/undotree'
-	use { -- Hopping: mouse alternative
-		"phaazon/hop.nvim",
-		config = function()
-			require("hop").setup()
-			vim.api.nvim_set_keymap("n", "t", ":HopChar2<cr>", { silent = true })
-			vim.api.nvim_set_keymap("n", "T", ":HopWord<cr>", { silent = true })
-		end,
-
-	}
+	-- This one seems to be buggy
+	-- use { -- Hopping: mouse alternative
+	-- 	"phaazon/hop.nvim",
+	-- 	config = function()
+	-- 		require("hop").setup()
+	-- 		vim.api.nvim_set_keymap("n", "t", ":HopChar2<cr>", { silent = true })
+	-- 		vim.api.nvim_set_keymap("n", "T", ":HopWord<cr>", { silent = true })
+	-- 	end,
+	--
+	-- }
 	--  Commenting
 	use {
 		'numToStr/Comment.nvim',
